@@ -1,0 +1,1014 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ShopCart — Discover The Best Products Online</title>
+  <meta name="description" content="Shop top-quality products at unbeatable prices. Electronics, Fashion, Home & Living, Beauty, and Sports with fast worldwide shipping.">
+  
+  <!-- Design System CSS Foundations -->
+  <link rel="stylesheet" href="styles/tokens.css">
+  <link rel="stylesheet" href="styles/base.css">
+  <link rel="stylesheet" href="styles/utilities.css">
+  <link rel="stylesheet" href="styles/components.css">
+  <link rel="stylesheet" href="styles/sections.css">
+
+  <style>
+    /* Floating Mode Switcher */
+    .mode-switch-bar {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 9999;
+    }
+    .mode-switch-btn {
+      background: var(--color-dark-800);
+      color: #fff;
+      padding: 12px 20px;
+      border-radius: var(--radius-full);
+      box-shadow: var(--shadow-xl);
+      font-weight: 700;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border: 2px solid rgba(255, 107, 0, 0.4);
+      transition: all 0.2s ease;
+    }
+    .mode-switch-btn:hover {
+      background: var(--color-primary);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-primary-glow);
+    }
+    
+    /* Design System Inspector View Styles */
+    #pattern-library-view {
+      padding-block: var(--space-12);
+      background-color: var(--color-surface-muted);
+      min-height: 100vh;
+    }
+    .ds-header {
+      margin-bottom: var(--space-8);
+      border-bottom: 2px solid var(--color-border);
+      padding-bottom: var(--space-4);
+    }
+    .ds-card {
+      background: #fff;
+      border-radius: var(--radius-lg);
+      padding: var(--space-6);
+      border: 1px solid var(--color-border);
+      margin-bottom: var(--space-8);
+      box-shadow: var(--shadow-sm);
+    }
+    .swatch-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: var(--space-4);
+      margin-top: var(--space-4);
+    }
+    .swatch {
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      border: 1px solid var(--color-border);
+      background: #fff;
+    }
+    .swatch-color {
+      height: 70px;
+      width: 100%;
+    }
+    .swatch-info {
+      padding: 10px;
+      font-size: 12px;
+    }
+    .swatch-info strong {
+      display: block;
+      color: var(--color-text-primary);
+    }
+    .swatch-info code {
+      color: var(--color-text-muted);
+      font-size: 11px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Floating Mode Switcher Button -->
+  <div class="mode-switch-bar">
+    <button id="ds-mode-toggle" class="mode-switch-btn" aria-label="Toggle Design System View">
+      <span>🎨 View Design System</span>
+    </button>
+  </div>
+
+  <!-- =========================================================================
+       VIEW 1: COMPLETE LIVING SHOPPING STOREFRONT
+       ========================================================================= -->
+  <div id="storefront-view">
+    
+    <!-- Top Announcement Bar -->
+    <aside class="announcement-bar" aria-label="Site Announcements and Perks">
+      <div class="container">
+        <div class="announcement-perks">
+          <div class="announcement-perk">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
+            <span>Free Shipping On Orders Over $99</span>
+          </div>
+          <div class="announcement-perk">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+            <span>30-Day Money-Back Guarantee</span>
+          </div>
+          <div class="announcement-perk">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18v-6a9 9 0 0 1 18 0v6"></path><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"></path></svg>
+            <span>24/7 Customer Support</span>
+          </div>
+        </div>
+        <div class="announcement-selectors">
+          <button class="announcement-select-btn" aria-label="Select Language">
+            <span>English</span> ▾
+          </button>
+          <button class="announcement-select-btn" aria-label="Select Currency">
+            <span>USD</span> ▾
+          </button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Global Header & Navbar -->
+    <header class="header-global" role="banner">
+      <div class="container header-inner">
+        <!-- Logo -->
+        <a href="#" class="header-logo" aria-label="ShopCart Home">
+          <svg class="header-logo-icon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M19 6h-2c0-2.76-2.24-5-5-5S7 3.24 7 6H5c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-7-3c1.66 0 3 1.34 3 3H9c0-1.66 1.34-3 3-3zm7 17H5V8h14v12z"/>
+          </svg>
+          <span>ShopCart</span>
+        </a>
+
+        <!-- Main Navigation Links -->
+        <nav class="header-nav" aria-label="Main Navigation">
+          <a href="#" class="nav-link active">Home</a>
+          <a href="#shop" class="nav-link">Shop ▾</a>
+          <a href="#categories" class="nav-link">Categories ▾</a>
+          <a href="#deals" class="nav-link">Deals</a>
+          <a href="#pages" class="nav-link">Pages ▾</a>
+          <a href="#blog" class="nav-link">Blog</a>
+          <a href="#contact" class="nav-link">Contact</a>
+        </nav>
+
+        <!-- Search Bar & Actions -->
+        <div class="header-actions">
+          <div class="search-bar">
+            <input type="text" id="header-search-input" class="search-input" placeholder="Search products..." aria-label="Search products" />
+            <button class="search-btn" aria-label="Submit search">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            </button>
+          </div>
+
+          <!-- Account Trigger -->
+          <button class="btn-icon" aria-label="User Account">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+          </button>
+
+          <!-- Cart Trigger with Dynamic Badge -->
+          <button id="header-cart-trigger" class="btn-icon header-cart-btn" aria-label="Shopping Cart">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+            <span id="cart-count-badge" class="badge-counter">0</span>
+          </button>
+
+          <!-- Mobile Toggle -->
+          <button id="mobile-menu-toggle" class="mobile-menu-toggle" aria-label="Open mobile navigation">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <!-- Hero Promotional Showcase -->
+      <section class="hero-section">
+        <div class="container hero-grid">
+          <div class="hero-content">
+            <span class="badge badge-accent">NEW COLLECTION</span>
+            <h1 class="hero-title">Discover The Best <span class="highlight">Products</span> Online</h1>
+            <p class="hero-subtitle">Shop top-quality products at unbeatable prices. Exclusive deals just for you!</p>
+            <div class="hero-cta-group">
+              <a href="#best-selling" class="btn btn-dark">Shop Now</a>
+              <a href="#categories" class="btn btn-outline">Explore Collection</a>
+            </div>
+            <!-- Trust Badges Under Hero -->
+            <div class="hero-trust-bar">
+              <div class="hero-trust-item">
+                <svg class="hero-trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
+                <div class="hero-trust-text">
+                  <strong>Free Shipping</strong>
+                  <span>On orders over $99</span>
+                </div>
+              </div>
+              <div class="hero-trust-item">
+                <svg class="hero-trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>
+                <div class="hero-trust-text">
+                  <strong>30 Days Returns</strong>
+                  <span>Hassle-free returns</span>
+                </div>
+              </div>
+              <div class="hero-trust-item">
+                <svg class="hero-trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                <div class="hero-trust-text">
+                  <strong>Secure Payment</strong>
+                  <span>100% safe & secure</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Hero 3D Pedestal Visual -->
+          <div class="hero-visual">
+            <div class="badge-discount">
+              <span class="badge-discount-label">Save</span>
+              <span class="badge-discount-val">30%</span>
+            </div>
+            <div class="hero-visual-frame">
+              <img src="assets/images/hero_smartwatch.jpg" alt="Smart Watch Pro on Pedestal" width="460" height="460" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Shop By Category Section -->
+      <section id="categories" class="section">
+        <div class="container">
+          <div class="section-header">
+            <h2 class="section-title">Shop By Category</h2>
+            <a href="#all-categories" class="section-link">
+              <span>View All Categories</span>
+              <svg class="icon-arrow" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" /></svg>
+            </a>
+          </div>
+
+          <div class="categories-grid">
+            <a href="#electronics" class="category-card">
+              <div class="category-media">
+                <img src="assets/images/category_electronics.jpg" alt="Electronics" loading="lazy" />
+              </div>
+              <span class="category-title">Electronics</span>
+            </a>
+            <a href="#fashion" class="category-card">
+              <div class="category-media">
+                <img src="assets/images/category_fashion.jpg" alt="Fashion" loading="lazy" />
+              </div>
+              <span class="category-title">Fashion</span>
+            </a>
+            <a href="#home" class="category-card">
+              <div class="category-media">
+                <img src="assets/images/category_home.jpg" alt="Home & Living" loading="lazy" />
+              </div>
+              <span class="category-title">Home & Living</span>
+            </a>
+            <a href="#beauty" class="category-card">
+              <div class="category-media">
+                <img src="assets/images/category_beauty.jpg" alt="Beauty" loading="lazy" />
+              </div>
+              <span class="category-title">Beauty</span>
+            </a>
+            <a href="#sports" class="category-card">
+              <div class="category-media">
+                <img src="assets/images/category_sports.jpg" alt="Sports" loading="lazy" />
+              </div>
+              <span class="category-title">Sports</span>
+            </a>
+            <a href="#toys" class="category-card">
+              <div class="category-media">
+                <img src="assets/images/category_toys.jpg" alt="Toys & Games" loading="lazy" />
+              </div>
+              <span class="category-title">Toys & Games</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Best Selling Products Section -->
+      <section id="best-selling" class="section" style="background-color: var(--color-surface-muted);">
+        <div class="container">
+          <div class="section-header">
+            <h2 class="section-title">Best Selling Products</h2>
+            <a href="#all-products" class="section-link">
+              <span>View All Products</span>
+              <svg class="icon-arrow" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" /></svg>
+            </a>
+          </div>
+
+          <div class="products-grid">
+            <!-- Product 1 -->
+            <article class="product-card" data-product-id="1" data-price="129.99">
+              <div class="product-card-top-actions">
+                <button class="btn-icon btn-wishlist" aria-label="Add to wishlist">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                </button>
+                <button class="btn-icon btn-quick-cart" aria-label="Quick add">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                </button>
+              </div>
+              <div class="product-card-media">
+                <img src="assets/images/product_watch.jpg" alt="Smart Watch Pro" loading="lazy" />
+              </div>
+              <div class="product-card-body">
+                <h3 class="product-name">Smart Watch Pro</h3>
+                <div class="product-rating-row">
+                  <span class="rating-stars">★★★★★</span>
+                  <span class="rating-count">(128)</span>
+                </div>
+                <div class="product-prices">
+                  <span class="price-active">$129.99</span>
+                  <span class="price-strikethrough">$199.99</span>
+                </div>
+                <button class="btn btn-dark btn-full btn-add-cart">Add to Cart</button>
+              </div>
+            </article>
+
+            <!-- Product 2 -->
+            <article class="product-card" data-product-id="2" data-price="89.99">
+              <div class="product-card-top-actions">
+                <button class="btn-icon btn-wishlist" aria-label="Add to wishlist">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                </button>
+                <button class="btn-icon btn-quick-cart" aria-label="Quick add">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                </button>
+              </div>
+              <div class="product-card-media">
+                <img src="assets/images/product_headphones.jpg" alt="Wireless Headphones" loading="lazy" />
+              </div>
+              <div class="product-card-body">
+                <h3 class="product-name">Wireless Headphones</h3>
+                <div class="product-rating-row">
+                  <span class="rating-stars">★★★★☆</span>
+                  <span class="rating-count">(96)</span>
+                </div>
+                <div class="product-prices">
+                  <span class="price-active">$89.99</span>
+                  <span class="price-strikethrough">$139.99</span>
+                </div>
+                <button class="btn btn-dark btn-full btn-add-cart">Add to Cart</button>
+              </div>
+            </article>
+
+            <!-- Product 3 -->
+            <article class="product-card" data-product-id="3" data-price="59.99">
+              <div class="product-card-top-actions">
+                <button class="btn-icon btn-wishlist" aria-label="Add to wishlist">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                </button>
+                <button class="btn-icon btn-quick-cart" aria-label="Quick add">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                </button>
+              </div>
+              <div class="product-card-media">
+                <img src="assets/images/product_backpack.jpg" alt="Leather Backpack" loading="lazy" />
+              </div>
+              <div class="product-card-body">
+                <h3 class="product-name">Leather Backpack</h3>
+                <div class="product-rating-row">
+                  <span class="rating-stars">★★★★★</span>
+                  <span class="rating-count">(74)</span>
+                </div>
+                <div class="product-prices">
+                  <span class="price-active">$59.99</span>
+                  <span class="price-strikethrough">$89.99</span>
+                </div>
+                <button class="btn btn-dark btn-full btn-add-cart">Add to Cart</button>
+              </div>
+            </article>
+
+            <!-- Product 4 -->
+            <article class="product-card" data-product-id="4" data-price="66.99">
+              <div class="product-card-top-actions">
+                <button class="btn-icon btn-wishlist" aria-label="Add to wishlist">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                </button>
+                <button class="btn-icon btn-quick-cart" aria-label="Quick add">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                </button>
+              </div>
+              <div class="product-card-media">
+                <img src="assets/images/product_shoes.jpg" alt="Running Shoes" loading="lazy" />
+              </div>
+              <div class="product-card-body">
+                <h3 class="product-name">Running Shoes</h3>
+                <div class="product-rating-row">
+                  <span class="rating-stars">★★★★☆</span>
+                  <span class="rating-count">(63)</span>
+                </div>
+                <div class="product-prices">
+                  <span class="price-active">$66.99</span>
+                  <span class="price-strikethrough">$119.99</span>
+                </div>
+                <button class="btn btn-dark btn-full btn-add-cart">Add to Cart</button>
+              </div>
+            </article>
+
+            <!-- Product 5 -->
+            <article class="product-card" data-product-id="5" data-price="699.99">
+              <div class="product-card-top-actions">
+                <button class="btn-icon btn-wishlist" aria-label="Add to wishlist">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                </button>
+                <button class="btn-icon btn-quick-cart" aria-label="Quick add">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                </button>
+              </div>
+              <div class="product-card-media">
+                <img src="assets/images/product_phone.jpg" alt="Smartphone 128GB" loading="lazy" />
+              </div>
+              <div class="product-card-body">
+                <h3 class="product-name">Smartphone 128GB</h3>
+                <div class="product-rating-row">
+                  <span class="rating-stars">★★★★★</span>
+                  <span class="rating-count">(112)</span>
+                </div>
+                <div class="product-prices">
+                  <span class="price-active">$699.99</span>
+                  <span class="price-strikethrough">$899.99</span>
+                </div>
+                <button class="btn btn-dark btn-full btn-add-cart">Add to Cart</button>
+              </div>
+            </article>
+
+            <!-- Product 6 -->
+            <article class="product-card" data-product-id="6" data-price="19.99">
+              <div class="product-card-top-actions">
+                <button class="btn-icon btn-wishlist" aria-label="Add to wishlist">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                </button>
+                <button class="btn-icon btn-quick-cart" aria-label="Quick add">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                </button>
+              </div>
+              <div class="product-card-media">
+                <img src="assets/images/product_sunglasses.jpg" alt="Sunglasses UV400" loading="lazy" />
+              </div>
+              <div class="product-card-body">
+                <h3 class="product-name">Sunglasses UV400</h3>
+                <div class="product-rating-row">
+                  <span class="rating-stars">★★★★☆</span>
+                  <span class="rating-count">(88)</span>
+                </div>
+                <div class="product-prices">
+                  <span class="price-active">$19.99</span>
+                  <span class="price-strikethrough">$39.99</span>
+                </div>
+                <button class="btn btn-dark btn-full btn-add-cart">Add to Cart</button>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Flash Sale Promotional Banner with Countdown -->
+      <section id="deals" class="section">
+        <div class="container">
+          <div class="flash-sale-banner">
+            <div class="flash-sale-info">
+              <span class="flash-sale-tag">Limited Time Offer</span>
+              <h2 class="flash-sale-title">Super Sale Up To <span class="discount-tag">50% Off!</span></h2>
+              <p class="flash-sale-desc">On selected items. Shop now before the deal ends.</p>
+            </div>
+
+            <!-- Countdown Timer Units -->
+            <div class="countdown-timer" role="timer" aria-label="Sale countdown">
+              <div class="countdown-box">
+                <span id="timer-days" class="countdown-num">02</span>
+                <span class="countdown-label">Days</span>
+              </div>
+              <div class="countdown-box">
+                <span id="timer-hours" class="countdown-num">14</span>
+                <span class="countdown-label">Hours</span>
+              </div>
+              <div class="countdown-box">
+                <span id="timer-mins" class="countdown-num">37</span>
+                <span class="countdown-label">Mins</span>
+              </div>
+              <div class="countdown-box">
+                <span id="timer-secs" class="countdown-num">59</span>
+                <span class="countdown-label">Secs</span>
+              </div>
+            </div>
+
+            <a href="#best-selling" class="btn btn-primary">Shop The Sale</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Featured Brands Section -->
+      <section class="brands-section">
+        <div class="container">
+          <h3 class="footer-col-title" style="color: var(--color-text-primary); margin-bottom: var(--space-4);">Our Featured Brands</h3>
+          <div class="brands-container">
+            <span class="brand-item">SAMSUNG</span>
+            <span class="brand-item">NIKE</span>
+            <span class="brand-item">SONY</span>
+            <span class="brand-item">ADIDAS</span>
+            <span class="brand-item">APPLE</span>
+            <span class="brand-item">PUMA</span>
+            <span class="brand-item">PHILIPS</span>
+            <span class="brand-item">BOSCH</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Split Section: Testimonials & Why Shop With Us -->
+      <section class="section">
+        <div class="container split-grid">
+          <!-- What Our Customers Say -->
+          <div class="card-module">
+            <div>
+              <div class="testimonial-card-header">
+                <h3 class="section-title" style="font-size: 1.15rem;">What Our Customers Say</h3>
+                <span class="testimonial-quote-icon">“</span>
+              </div>
+              <div class="testimonial-user" style="margin-bottom: var(--space-4);">
+                <img src="assets/images/customer_avatar.jpg" alt="Michael Brown" class="testimonial-avatar" />
+                <div>
+                  <h4 id="testimonial-name" style="font-size: 0.95rem; font-weight: bold; color: var(--color-text-primary);">Michael Brown</h4>
+                  <span id="testimonial-role" class="badge badge-verified">Verified Buyer</span>
+                </div>
+              </div>
+              <p id="testimonial-quote" class="testimonial-body">
+                “Amazing quality and fast delivery! The products are exactly as described. Highly recommended!”
+              </p>
+            </div>
+            <div class="flex items-center justify-between">
+              <div class="rating-stars">★★★★★</div>
+              <div class="testimonial-dots">
+                <span class="testimonial-dot active"></span>
+                <span class="testimonial-dot"></span>
+                <span class="testimonial-dot"></span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Why Shop With Us? -->
+          <div class="card-module">
+            <div>
+              <h3 class="section-title" style="font-size: 1.15rem; margin-bottom: var(--space-2);">Why Shop With Us?</h3>
+              <div class="stats-grid">
+                <div class="stat-item">
+                  <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                  <span class="stat-val">10K+</span>
+                  <span class="stat-label">Happy Customers</span>
+                </div>
+                <div class="stat-item">
+                  <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+                  <span class="stat-val">15K+</span>
+                  <span class="stat-label">Products Sold</span>
+                </div>
+                <div class="stat-item">
+                  <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M8 14s1.5 2 4 2 4-2 4-2"></path><line x1="9" y1="9" x2="9.01" y2="9"></line><line x1="15" y1="9" x2="15.01" y2="9"></line></svg>
+                  <span class="stat-val">99%</span>
+                  <span class="stat-label">Positive Reviews</span>
+                </div>
+                <div class="stat-item">
+                  <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                  <span class="stat-val">24/7</span>
+                  <span class="stat-label">Customer Support</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Split Section: Newsletter & Instagram Gallery -->
+      <section class="section">
+        <div class="container split-grid">
+          <!-- Subscribe to Newsletter -->
+          <div class="card-module">
+            <div>
+              <h3 class="section-title" style="font-size: 1.15rem;">Subscribe To Our Newsletter</h3>
+              <p style="font-size: 0.875rem; color: var(--color-text-secondary); margin-top: 4px;">
+                Get the latest updates on new products and exclusive offers straight to your inbox.
+              </p>
+              <form id="newsletter-form" class="newsletter-form">
+                <div class="newsletter-input-group">
+                  <input type="email" id="newsletter-email" class="form-input" placeholder="Enter your email address" required />
+                  <button type="submit" class="btn btn-dark">Subscribe</button>
+                </div>
+                <label class="custom-checkbox-label">
+                  <input type="checkbox" id="newsletter-agree" class="custom-checkbox" />
+                  <span>I agree to the <a href="#privacy" style="text-decoration: underline; font-weight: bold;">Privacy Policy</a></span>
+                </label>
+                <div id="newsletter-feedback" style="display: none; font-size: 0.85rem; font-weight: 600;"></div>
+              </form>
+            </div>
+          </div>
+
+          <!-- Follow Us On Instagram -->
+          <div class="card-module">
+            <div>
+              <h3 class="section-title" style="font-size: 1.15rem;">Follow Us On Instagram</h3>
+              <div class="instagram-grid">
+                <div class="instagram-item">
+                  <img src="assets/images/insta_1.jpg" alt="Instagram post" loading="lazy" />
+                </div>
+                <div class="instagram-item">
+                  <img src="assets/images/insta_2.jpg" alt="Instagram post" loading="lazy" />
+                </div>
+                <div class="instagram-item">
+                  <img src="assets/images/insta_3.jpg" alt="Instagram post" loading="lazy" />
+                </div>
+                <div class="instagram-item">
+                  <img src="assets/images/insta_4.jpg" alt="Instagram post" loading="lazy" />
+                </div>
+              </div>
+              <div class="instagram-footer">
+                <span style="font-weight: 700; color: var(--color-text-primary);">@shopcart</span>
+                <a href="#instagram" class="btn btn-dark btn-pill" style="padding: 6px 16px; font-size: 0.85rem;">Follow Us</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Split Section: Latest From Our Blog & FAQ -->
+      <section id="blog" class="section">
+        <div class="container split-grid">
+          <!-- Latest From Our Blog -->
+          <div class="card-module">
+            <div>
+              <div class="section-header" style="margin-bottom: var(--space-4);">
+                <h3 class="section-title" style="font-size: 1.15rem;">Latest From Our Blog</h3>
+                <a href="#all-posts" class="section-link">
+                  <span>View All Posts</span>
+                  <svg class="icon-arrow" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" /></svg>
+                </a>
+              </div>
+              <div class="blog-cards-list">
+                <!-- Blog 1 -->
+                <article class="blog-card">
+                  <div class="blog-card-thumb">
+                    <img src="assets/images/blog_1.jpg" alt="10 Tips to Choose Products" loading="lazy" />
+                  </div>
+                  <div>
+                    <span class="blog-card-date">May 12, 2024</span>
+                    <h4 class="blog-card-title">10 Tips to Choose the Right Products Online</h4>
+                    <a href="#blog-1" class="blog-card-link">Read More →</a>
+                  </div>
+                </article>
+                <!-- Blog 2 -->
+                <article class="blog-card">
+                  <div class="blog-card-thumb">
+                    <img src="assets/images/blog_2.jpg" alt="How to Get Best Deals" loading="lazy" />
+                  </div>
+                  <div>
+                    <span class="blog-card-date">May 13, 2024</span>
+                    <h4 class="blog-card-title">How to Get the Best Deals and Discounts</h4>
+                    <a href="#blog-2" class="blog-card-link">Read More →</a>
+                  </div>
+                </article>
+                <!-- Blog 3 -->
+                <article class="blog-card">
+                  <div class="blog-card-thumb">
+                    <img src="assets/images/blog_3.jpg" alt="Future of E-commerce" loading="lazy" />
+                  </div>
+                  <div>
+                    <span class="blog-card-date">May 15, 2024</span>
+                    <h4 class="blog-card-title">The Future of E-commerce: Trends to Watch</h4>
+                    <a href="#blog-3" class="blog-card-link">Read More →</a>
+                  </div>
+                </article>
+              </div>
+            </div>
+          </div>
+
+          <!-- Frequently Asked Questions -->
+          <div class="card-module">
+            <div>
+              <h3 class="section-title" style="font-size: 1.15rem; margin-bottom: var(--space-2);">Frequently Asked Questions</h3>
+              <div class="faq-list">
+                <details class="faq-item" open>
+                  <summary class="faq-summary">
+                    <span>What payment methods do you accept?</span>
+                    <span class="faq-icon">+</span>
+                  </summary>
+                  <div class="faq-content">
+                    We accept Visa, MasterCard, American Express, PayPal, Apple Pay, and Google Pay with bank-grade 256-bit encryption.
+                  </div>
+                </details>
+                <details class="faq-item">
+                  <summary class="faq-summary">
+                    <span>How can I track my order?</span>
+                    <span class="faq-icon">+</span>
+                  </summary>
+                  <div class="faq-content">
+                    Once your order ships, you will receive an email confirmation with your tracking number and a real-time carrier link.
+                  </div>
+                </details>
+                <details class="faq-item">
+                  <summary class="faq-summary">
+                    <span>What is your return policy?</span>
+                    <span class="faq-icon">+</span>
+                  </summary>
+                  <div class="faq-content">
+                    We offer a 30-day hassle-free money-back guarantee. If you are not satisfied, return it for a full refund or exchange.
+                  </div>
+                </details>
+                <details class="faq-item">
+                  <summary class="faq-summary">
+                    <span>Do you ship internationally?</span>
+                    <span class="faq-icon">+</span>
+                  </summary>
+                  <div class="faq-content">
+                    Yes! We provide reliable international shipping to over 100 countries worldwide with expedited courier partners.
+                  </div>
+                </details>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Value Proposition Strip -->
+      <section class="value-strip">
+        <div class="container value-strip-grid">
+          <div class="value-strip-item">
+            <svg class="value-strip-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+            <div class="value-strip-text">
+              <strong>Secure Checkout</strong>
+              <span>100% Protected</span>
+            </div>
+          </div>
+          <div class="value-strip-item">
+            <svg class="value-strip-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>
+            <div class="value-strip-text">
+              <strong>Easy Returns</strong>
+              <span>30-Day Policy</span>
+            </div>
+          </div>
+          <div class="value-strip-item">
+            <svg class="value-strip-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
+            <div class="value-strip-text">
+              <strong>Quality Guarantee</strong>
+              <span>Premium Products</span>
+            </div>
+          </div>
+          <div class="value-strip-item">
+            <svg class="value-strip-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
+            <div class="value-strip-text">
+              <strong>Fast Delivery</strong>
+              <span>Worldwide Shipping</span>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Mega Footer -->
+    <footer class="footer-global" role="contentinfo">
+      <div class="container">
+        <div class="footer-columns">
+          <!-- Col 1: Brand Info -->
+          <div>
+            <a href="#" class="header-logo" style="color: #fff; margin-bottom: var(--space-3);">
+              <svg class="header-logo-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M19 6h-2c0-2.76-2.24-5-5-5S7 3.24 7 6H5c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-7-3c1.66 0 3 1.34 3 3H9c0-1.66 1.34-3 3-3zm7 17H5V8h14v12z"/></svg>
+              <span>ShopCart</span>
+            </a>
+            <p style="font-size: 0.85rem; line-height: 1.6; margin-bottom: var(--space-4);">
+              Your one-stop shop for top-quality products at the best prices. Shop smart, live better.
+            </p>
+            <div class="flex gap-2">
+              <button class="btn-icon" style="background: rgba(255,255,255,0.1); color:#fff; border:none;" aria-label="Facebook">f</button>
+              <button class="btn-icon" style="background: rgba(255,255,255,0.1); color:#fff; border:none;" aria-label="Twitter">t</button>
+              <button class="btn-icon" style="background: rgba(255,255,255,0.1); color:#fff; border:none;" aria-label="Instagram">in</button>
+              <button class="btn-icon" style="background: rgba(255,255,255,0.1); color:#fff; border:none;" aria-label="YouTube">yt</button>
+            </div>
+          </div>
+
+          <!-- Col 2: Quick Links -->
+          <div>
+            <h4 class="footer-col-title">Quick Links</h4>
+            <div class="footer-links">
+              <a href="#">Home</a>
+              <a href="#shop">Shop</a>
+              <a href="#categories">Categories</a>
+              <a href="#deals">Deals</a>
+              <a href="#about">About Us</a>
+            </div>
+          </div>
+
+          <!-- Col 3: Customer Service -->
+          <div>
+            <h4 class="footer-col-title">Customer Service</h4>
+            <div class="footer-links">
+              <a href="#contact">Contact Us</a>
+              <a href="#shipping">Shipping Policy</a>
+              <a href="#returns">Return Policy</a>
+              <a href="#terms">Terms & Conditions</a>
+              <a href="#faq">FAQ</a>
+            </div>
+          </div>
+
+          <!-- Col 4: My Account -->
+          <div>
+            <h4 class="footer-col-title">My Account</h4>
+            <div class="footer-links">
+              <a href="#orders">My Orders</a>
+              <a href="#wishlist">Wishlist</a>
+              <a href="#account">Account Details</a>
+              <a href="#track">Track Order</a>
+              <a href="#login">Login / Register</a>
+            </div>
+          </div>
+
+          <!-- Col 5: Contact Us -->
+          <div id="contact">
+            <h4 class="footer-col-title">Contact Us</h4>
+            <div class="footer-links" style="font-size: 0.85rem; line-height: 1.6;">
+              <p>📍 123 Commerce St, Suite 100<br>New York, NY 10001</p>
+              <p>📞 +1 (123) 456-7890</p>
+              <p>✉ support@shopcart.com</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Footer Bottom Bar -->
+        <div class="footer-bottom">
+          <p>© 2024 ShopCart. All Rights Reserved.</p>
+          <div class="payment-badges">
+            <span class="payment-badge">VISA</span>
+            <span class="payment-badge">Mastercard</span>
+            <span class="payment-badge">PayPal</span>
+            <span class="payment-badge">Apple Pay</span>
+            <span class="payment-badge">Google Pay</span>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Slide-Over Cart Drawer -->
+    <div id="cart-overlay" class="cart-drawer-overlay"></div>
+    <aside id="cart-drawer" class="cart-drawer" role="dialog" aria-modal="true" aria-label="Shopping Cart">
+      <div class="cart-drawer-header">
+        <div class="flex items-center gap-2">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+          <h3 style="font-size: 1.1rem; font-weight: bold; color: var(--color-text-primary);">Your Cart</h3>
+        </div>
+        <button id="cart-close-btn" class="btn-icon" aria-label="Close cart drawer">×</button>
+      </div>
+
+      <!-- Free Shipping Bar Inside Drawer -->
+      <div style="padding: 12px 24px; background: var(--color-surface-muted); border-bottom: 1px solid var(--color-border);">
+        <div id="free-shipping-msg" style="font-size: 0.8rem; font-weight: 600; margin-bottom: 6px; color: var(--color-text-primary);">
+          Add $99.00 more for FREE Shipping
+        </div>
+        <div style="width: 100%; height: 6px; background: var(--color-border); border-radius: 999px; overflow: hidden;">
+          <div id="free-shipping-progress" style="width: 0%; height: 100%; background: var(--color-primary); transition: width 0.3s ease;"></div>
+        </div>
+      </div>
+
+      <div id="cart-items-container" class="cart-drawer-body">
+        <!-- Rendered by JavaScript -->
+      </div>
+
+      <div class="cart-drawer-footer">
+        <div class="flex items-center justify-between" style="margin-bottom: var(--space-4);">
+          <span style="font-size: 1rem; color: var(--color-text-secondary);">Subtotal:</span>
+          <span id="cart-subtotal-val" style="font-size: 1.25rem; font-weight: 800; color: var(--color-text-primary);">$0.00</span>
+        </div>
+        <button class="btn btn-primary btn-full" style="padding: 14px; font-size: 1rem;">
+          Proceed to Checkout
+        </button>
+      </div>
+    </aside>
+
+  </div><!-- /storefront-view -->
+
+
+  <!-- =========================================================================
+       VIEW 2: LIVING DESIGN SYSTEM PATTERN LIBRARY EXPLORER
+       ========================================================================= -->
+  <div id="pattern-library-view" style="display: none;">
+    <div class="container">
+      <div class="ds-header">
+        <span class="badge badge-accent">Design System v1.0</span>
+        <h1 style="font-size: 2.25rem; font-weight: 800; margin-top: 8px;">ShopCart Pattern Library & Component Showcase</h1>
+        <p style="color: var(--color-text-secondary); margin-top: 4px;">
+          Live inspectable design tokens, atomic buttons, badges, card patterns, and layout architectures.
+        </p>
+      </div>
+
+      <!-- Section 1: Color Palette -->
+      <div class="ds-card">
+        <h2 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 4px;">1. Color Palette Tokens</h2>
+        <p style="font-size: 0.875rem; color: var(--color-text-muted);">Defined in <code>styles/tokens.css</code></p>
+        <div class="swatch-grid">
+          <div class="swatch">
+            <div class="swatch-color" style="background-color: #FF6B00;"></div>
+            <div class="swatch-info">
+              <strong>Primary Brand</strong>
+              <code>--color-primary</code><br>
+              <code>#FF6B00</code>
+            </div>
+          </div>
+          <div class="swatch">
+            <div class="swatch-color" style="background-color: #FFF3EB;"></div>
+            <div class="swatch-info">
+              <strong>Primary Light</strong>
+              <code>--color-primary-light</code><br>
+              <code>#FFF3EB</code>
+            </div>
+          </div>
+          <div class="swatch">
+            <div class="swatch-color" style="background-color: #111827;"></div>
+            <div class="swatch-info">
+              <strong>Dark Slate 800</strong>
+              <code>--color-dark-800</code><br>
+              <code>#111827</code>
+            </div>
+          </div>
+          <div class="swatch">
+            <div class="swatch-color" style="background-color: #0B0F17;"></div>
+            <div class="swatch-info">
+              <strong>Dark Pure 900</strong>
+              <code>--color-dark-900</code><br>
+              <code>#0B0F17</code>
+            </div>
+          </div>
+          <div class="swatch">
+            <div class="swatch-color" style="background-color: #FBBF24;"></div>
+            <div class="swatch-info">
+              <strong>Rating Gold</strong>
+              <code>--color-rating</code><br>
+              <code>#FBBF24</code>
+            </div>
+          </div>
+          <div class="swatch">
+            <div class="swatch-color" style="background-color: #10B981;"></div>
+            <div class="swatch-info">
+              <strong>Success Green</strong>
+              <code>--color-success</code><br>
+              <code>#10B981</code>
+            </div>
+          </div>
+          <div class="swatch">
+            <div class="swatch-color" style="background-color: #F9FAFB; border-bottom: 1px solid #E5E7EB;"></div>
+            <div class="swatch-info">
+              <strong>Surface Muted</strong>
+              <code>--color-surface-muted</code><br>
+              <code>#F9FAFB</code>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section 2: Atomic Buttons & Badges -->
+      <div class="ds-card">
+        <h2 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 4px;">2. Atomic Buttons & Badges</h2>
+        <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: center; margin-top: 16px;">
+          <button class="btn btn-primary">Primary Button</button>
+          <button class="btn btn-dark">Dark Button</button>
+          <button class="btn btn-outline">Outline Button</button>
+          <button class="btn btn-dark btn-pill">Pill Button</button>
+          <button class="btn-icon" aria-label="Icon preview">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+          </button>
+          <button class="btn-icon active" aria-label="Icon active preview">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+          </button>
+        </div>
+        <div style="display: flex; gap: 12px; flex-wrap: wrap; align-items: center; margin-top: 16px;">
+          <span class="badge badge-accent">NEW COLLECTION</span>
+          <span class="badge badge-verified">✓ Verified Buyer</span>
+          <span class="rating-stars">★★★★★ <span class="rating-count">(128)</span></span>
+        </div>
+      </div>
+
+      <!-- Section 3: Typography Scales -->
+      <div class="ds-card">
+        <h2 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 12px;">3. Typography Hierarchy</h2>
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+          <div>
+            <span style="font-size: 12px; color: var(--color-text-muted);">Hero Display (ExtraBold 44px)</span>
+            <div style="font-size: var(--font-size-hero); font-weight: 800; line-height: 1.15;">Discover The Best Products</div>
+          </div>
+          <div>
+            <span style="font-size: 12px; color: var(--color-text-muted);">H1 Headline (Bold 32px)</span>
+            <div style="font-size: var(--font-size-h1); font-weight: 700;">Super Sale Up To 50% Off!</div>
+          </div>
+          <div>
+            <span style="font-size: 12px; color: var(--color-text-muted);">H2 Section Title (Bold 24px)</span>
+            <div style="font-size: var(--font-size-h2); font-weight: 700;">Best Selling Products</div>
+          </div>
+          <div>
+            <span style="font-size: 12px; color: var(--color-text-muted);">Body Text (Regular 15px)</span>
+            <div style="font-size: var(--font-size-body); color: var(--color-text-secondary); max-width: 600px;">
+              Shop top-quality products at unbeatable prices. All items include 30-day money-back guarantee with fast delivery.
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div><!-- /pattern-library-view -->
+
+  <!-- Application Logic -->
+  <script src="scripts/app.js"></script>
+</body>
+</html>
