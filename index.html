@@ -1,848 +1,1074 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ShopCart — Discover The Best Products Online</title>
-  <meta name="description" content="Shop top-quality products at unbeatable prices. Electronics, Fashion, Home & Living, Beauty, and Sports with fast worldwide shipping.">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ShopCart — Precision Everyday Essentials & Carry</title>
+  <meta name="description" content="ShopCart crafts premium tech accessories, weatherproof everyday carry, and studio-grade audio. Backed by our 3-year all-inclusive warranty." />
   
-  <!-- Design System CSS Foundations -->
-  <link rel="stylesheet" href="styles/tokens.css">
-  <link rel="stylesheet" href="styles/base.css">
-  <link rel="stylesheet" href="styles/utilities.css">
-  <link rel="stylesheet" href="styles/components.css">
-  <link rel="stylesheet" href="styles/sections.css">
-
-  <style>
-    /* Floating Mode Switcher */
-    .mode-switch-bar {
-      position: fixed;
-      bottom: 24px;
-      right: 24px;
-      z-index: 9999;
-    }
-    .mode-switch-btn {
-      background: var(--color-dark-800);
-      color: #fff;
-      padding: 12px 20px;
-      border-radius: var(--radius-full);
-      box-shadow: var(--shadow-xl);
-      font-weight: 700;
-      font-size: 14px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      border: 2px solid rgba(255, 107, 0, 0.4);
-      transition: all 0.2s ease;
-    }
-    .mode-switch-btn:hover {
-      background: var(--color-primary);
-      transform: translateY(-2px);
-      box-shadow: var(--shadow-primary-glow);
-    }
-    
-    /* Design System Inspector View Styles */
-    #pattern-library-view {
-      padding-block: var(--space-12);
-      background-color: var(--color-surface-muted);
-      min-height: 100vh;
-    }
-    .ds-header {
-      margin-bottom: var(--space-8);
-      border-bottom: 2px solid var(--color-border);
-      padding-bottom: var(--space-4);
-    }
-    .ds-card {
-      background: #fff;
-      border-radius: var(--radius-lg);
-      padding: var(--space-6);
-      border: 1px solid var(--color-border);
-      margin-bottom: var(--space-8);
-      box-shadow: var(--shadow-sm);
-    }
-    .swatch-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-      gap: var(--space-4);
-      margin-top: var(--space-4);
-    }
-    .swatch {
-      border-radius: var(--radius-md);
-      overflow: hidden;
-      border: 1px solid var(--color-border);
-      background: #fff;
-    }
-    .swatch-color {
-      height: 70px;
-      width: 100%;
-    }
-    .swatch-info {
-      padding: 10px;
-      font-size: 12px;
-    }
-    .swatch-info strong {
-      display: block;
-      color: var(--color-text-primary);
-    }
-    .swatch-info code {
-      color: var(--color-text-muted);
-      font-size: 11px;
-    }
-  </style>
+  <!-- Design System CSS -->
+  <link rel="stylesheet" href="styles/tokens.css" />
+  <link rel="stylesheet" href="styles/base.css" />
+  <link rel="stylesheet" href="styles/utilities.css" />
+  <link rel="stylesheet" href="styles/components.css" />
+  <link rel="stylesheet" href="styles/sections.css" />
 </head>
 <body>
 
-  <!-- Floating Mode Switcher Button -->
-  <div class="mode-switch-bar">
-    <button id="ds-mode-toggle" class="mode-switch-btn" aria-label="Toggle Design System View">
-      <span>🎨 View Design System</span>
-    </button>
-  </div>
+  <!-- Toast Notification Container -->
+  <div id="toast-container" class="toast-container" aria-live="polite"></div>
 
-  <!-- =========================================================================
-       VIEW 1: COMPLETE LIVING SHOPPING STOREFRONT
-       ========================================================================= -->
+  <!-- VIEW 1: HIGH-BRANDED STOREFRONT -->
   <div id="storefront-view">
-    
-    <!-- Top Announcement Bar -->
-    <aside class="announcement-bar" aria-label="Site Announcements and Perks">
-      <div class="container">
-        <div class="announcement-perks">
-          <div class="announcement-perk">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
-            <span>Free Shipping On Orders Over $99</span>
-          </div>
-          <div class="announcement-perk">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-            <span>30-Day Money-Back Guarantee</span>
-          </div>
-          <div class="announcement-perk">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18v-6a9 9 0 0 1 18 0v6"></path><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"></path></svg>
-            <span>24/7 Customer Support</span>
-          </div>
+
+    <!-- Top Announcement Bar (Multi-Notice Ticker) -->
+    <aside class="announcement-bar" aria-label="Announcement">
+      <div class="container announcement-inner">
+        <div class="announcement-message">
+          <span>⚡</span>
+          <span><strong>LIMITED TIME:</strong> BUY 1 GET 2 FREE™ STOREWIDE — CODE APPLIED AUTOMATICALLY</span>
         </div>
-        <div class="announcement-selectors">
-          <button class="announcement-select-btn" aria-label="Select Language">
-            <span>English</span> ▾
-          </button>
-          <button class="announcement-select-btn" aria-label="Select Currency">
-            <span>USD</span> ▾
-          </button>
+        <div class="announcement-meta">
+          <span>📦 Free Worldwide Express Over $75</span>
+          <span>🛡️ 3-Year Warranty</span>
+          <a href="#tracking" style="color: var(--color-text-white);">Track Order</a>
+          <button style="color: var(--color-text-white); font-weight: 600;">USD $ (US)</button>
         </div>
       </div>
     </aside>
 
-    <!-- Global Header & Navbar -->
-    <header class="header-global" role="banner">
-      <div class="container header-inner">
-        <!-- Logo -->
-        <a href="#" class="header-logo" aria-label="ShopCart Home">
-          <svg class="header-logo-icon" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M19 6h-2c0-2.76-2.24-5-5-5S7 3.24 7 6H5c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-7-3c1.66 0 3 1.34 3 3H9c0-1.66 1.34-3 3-3zm7 17H5V8h14v12z"/>
-          </svg>
-          <span>ShopCart</span>
-        </a>
+    <!-- Global Header with Interactive Mega-Menu (Compact Architecture) -->
+    <header class="header-global" id="header-global">
+      <!-- Tier 1: Main Header (Compact Mode: Logo, Centered Search, Actions) -->
+      <div class="header-main">
+        <div class="container header-main-inner">
+          <!-- Logo -->
+          <a href="#" class="header-logo">
+            <svg class="header-logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <path d="M16 10a4 4 0 0 1-8 0"></path>
+            </svg>
+            <span>ShopCart</span>
+          </a>
 
-        <!-- Main Navigation Links -->
-        <nav class="header-nav" aria-label="Main Navigation">
-          <a href="#" class="nav-link active">Home</a>
-          <a href="#shop" class="nav-link">Shop ▾</a>
-          <a href="#categories" class="nav-link">Categories ▾</a>
-          <a href="#deals" class="nav-link">Deals</a>
-          <a href="#pages" class="nav-link">Pages ▾</a>
-          <a href="#blog" class="nav-link">Blog</a>
-          <a href="#contact" class="nav-link">Contact</a>
-        </nav>
-
-        <!-- Search Bar & Actions -->
-        <div class="header-actions">
-          <div class="search-bar">
-            <input type="text" id="header-search-input" class="search-input" placeholder="Search products..." aria-label="Search products" />
-            <button class="search-btn" aria-label="Submit search">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-            </button>
+          <!-- Center: Centered Search Bar with Shortcut -->
+          <div class="header-search-wrap">
+            <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            <input type="search" id="header-search-input" class="search-input" placeholder="Search essentials (e.g. watch, bag, audio, shades)..." autocomplete="off" />
+            <span class="search-shortcut-badge">⌘K</span>
           </div>
 
-          <!-- Account Trigger -->
-          <button class="btn-icon" aria-label="User Account">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-          </button>
+          <!-- Utility Actions -->
+          <div class="header-actions">
+            <!-- Account / Track Link -->
+            <a href="#flash-deals" class="header-action-link" title="Account & Orders">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+              <span>Account</span>
+            </a>
 
-          <!-- Cart Trigger with Dynamic Badge -->
-          <button id="header-cart-trigger" class="btn-icon header-cart-btn" aria-label="Shopping Cart">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
-            <span id="cart-count-badge" class="badge-counter">0</span>
-          </button>
+            <!-- Wishlist Button -->
+            <button id="header-wishlist-btn" class="btn-icon" aria-label="Wishlist" title="View Wishlist">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+              <span id="wishlist-badge" class="badge badge-dark" style="position: absolute; top: -4px; right: -4px; font-size: 9px; padding: 2px 5px; border-radius: 999px;">0</span>
+            </button>
 
-          <!-- Mobile Toggle -->
-          <button id="mobile-menu-toggle" class="mobile-menu-toggle" aria-label="Open mobile navigation">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
-          </button>
+            <!-- Cart Trigger Button -->
+            <button id="header-cart-trigger" class="header-cart-btn" aria-label="Open Shopping Cart">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+              <span class="cart-label">Cart</span>
+              <span id="cart-count-badge" class="cart-badge">0</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tier 2: Second Sub-Header (Navigation Links, Departments & Micro Guarantees) -->
+      <div class="header-sub">
+        <div class="container header-sub-inner">
+          <!-- Desktop / Horizontal Scroll Navigation -->
+          <nav class="header-sub-nav" aria-label="Secondary Navigation">
+            <div class="nav-item-has-mega">
+              <a href="#collection-grid" class="sub-nav-link active">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+                <span>Shop All</span>
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </a>
+
+              <!-- Mega-Menu Full-Width Panel (FashionNova / Bellroy benchmark) -->
+              <div class="mega-menu-panel">
+                <div class="container mega-menu-grid">
+                  <div>
+                    <h4 class="mega-col-title">Featured Drops</h4>
+                    <div class="mega-link-list">
+                      <a href="#collection-grid" class="mega-link">New In SS26 <span class="badge badge-accent">NEW</span></a>
+                      <a href="#collection-grid" class="mega-link">Best Sellers</a>
+                      <a href="#deals-of-week" class="mega-link">Deals of the Week <span class="badge badge-save">HOT</span></a>
+                      <a href="#top-brands" class="mega-link">Top Brands</a>
+                      <a href="#flash-deals" class="mega-link">Flash Deals <span class="badge badge-accent">LIMITED</span></a>
+                    </div>
+                  </div>
+
+                  <div>
+                    <h4 class="mega-col-title">Tech & Audio</h4>
+                    <div class="mega-link-list">
+                      <a href="#collection-grid" class="mega-link">Smart Watch Pro</a>
+                      <a href="#collection-grid" class="mega-link">Studio Headphones</a>
+                      <a href="#collection-grid" class="mega-link">MagSafe Charging</a>
+                      <a href="#collection-grid" class="mega-link">Titanium Straps</a>
+                      <a href="#collection-grid" class="mega-link">Cable Organizers</a>
+                    </div>
+                  </div>
+
+                  <div>
+                    <h4 class="mega-col-title">Everyday Carry</h4>
+                    <div class="mega-link-list">
+                      <a href="#collection-grid" class="mega-link">Leather Backpacks</a>
+                      <a href="#collection-grid" class="mega-link">Weatherproof Slings</a>
+                      <a href="#collection-grid" class="mega-link">Slim Wallets</a>
+                      <a href="#collection-grid" class="mega-link">Passport Sleeves</a>
+                      <a href="#collection-grid" class="mega-link">Key Organizers</a>
+                    </div>
+                  </div>
+
+                  <div>
+                    <h4 class="mega-col-title">Eyewear & Style</h4>
+                    <div class="mega-link-list">
+                      <a href="#collection-grid" class="mega-link">Polarized Sunglasses</a>
+                      <a href="#collection-grid" class="mega-link">Blue Light Blockers</a>
+                      <a href="#collection-grid" class="mega-link">Running Footwear</a>
+                      <a href="#collection-grid" class="mega-link">Apparel & Caps</a>
+                      <a href="#collection-grid" class="mega-link">Hard Shell Cases</a>
+                    </div>
+                  </div>
+
+                  <div class="mega-promo-tile">
+                    <div>
+                      <span class="badge badge-dark">STAFF PICK</span>
+                      <h5 style="font-size: 1rem; font-weight: 700; margin: 8px 0 4px 0; color: var(--color-text-primary);">Smart Watch Pro</h5>
+                      <p style="font-size: 0.8rem; color: var(--color-text-secondary); margin-bottom: 12px;">Titanium aerospace bezel with 72-hour battery life.</p>
+                    </div>
+                    <img src="assets/images/product_watch.jpg" alt="Smart Watch Pro" />
+                    <a href="#collection-grid" class="btn btn-dark btn-sm btn-full" style="justify-content: center;">Shop Now • $129.99</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <a href="#deals-of-week" class="sub-nav-link">
+              <span>Deals of the Week</span>
+              <span class="badge-mini badge-save">HOT</span>
+            </a>
+            <a href="#top-brands" class="sub-nav-link">Top Brands</a>
+            <a href="#flash-deals" class="sub-nav-link">
+              <span>Flash Deals</span>
+              <span class="badge-mini badge-accent">LIMITED</span>
+            </a>
+
+            <span class="sub-nav-separator"></span>
+
+            <!-- Category Direct Links (Synced with Collection Cards) -->
+            <a href="#collection-grid" onclick="filterCategory('tech')" class="sub-nav-link category-pill">Wearables</a>
+            <a href="#collection-grid" onclick="filterCategory('carry')" class="sub-nav-link category-pill">Everyday Carry</a>
+            <a href="#collection-grid" onclick="filterCategory('audio')" class="sub-nav-link category-pill">Studio Audio</a>
+            <a href="#collection-grid" onclick="filterCategory('eyewear')" class="sub-nav-link category-pill">Optics</a>
+          </nav>
+
+          <!-- Micro Guarantees Pill Group -->
+          <div class="header-sub-meta">
+            <span class="sub-meta-pill">🛡️ 3-Year Warranty</span>
+            <span class="sub-meta-pill">⚡ Free Express > $75</span>
+          </div>
         </div>
       </div>
     </header>
 
-    <main>
-      <!-- Hero Promotional Showcase -->
-      <section class="hero-section">
-        <div class="container hero-grid">
-          <div class="hero-content">
-            <span class="badge badge-accent">NEW COLLECTION</span>
-            <h1 class="hero-title">Discover The Best <span class="highlight">Products</span> Online</h1>
-            <p class="hero-subtitle">Shop top-quality products at unbeatable prices. Exclusive deals just for you!</p>
-            <div class="hero-cta-group">
-              <a href="#best-selling" class="btn btn-dark">Shop Now</a>
-              <a href="#categories" class="btn btn-outline">Explore Collection</a>
-            </div>
-            <!-- Trust Badges Under Hero -->
-            <div class="hero-trust-bar">
-              <div class="hero-trust-item">
-                <svg class="hero-trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
-                <div class="hero-trust-text">
-                  <strong>Free Shipping</strong>
-                  <span>On orders over $99</span>
-                </div>
-              </div>
-              <div class="hero-trust-item">
-                <svg class="hero-trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>
-                <div class="hero-trust-text">
-                  <strong>30 Days Returns</strong>
-                  <span>Hassle-free returns</span>
-                </div>
-              </div>
-              <div class="hero-trust-item">
-                <svg class="hero-trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
-                <div class="hero-trust-text">
-                  <strong>Secure Payment</strong>
-                  <span>100% safe & secure</span>
-                </div>
-              </div>
-            </div>
-          </div>
+    <!-- 1. Editorial Bento Grid Hero Section (Exact Benchmark Replica) -->
+    <section class="hero-bento-section" aria-label="Hero Outpost Showcase">
+      <div class="container">
+        <div class="bento-editorial-grid">
+          
+          <!-- LEFT PRIMARY CARD: The Outpost Collection Flagship -->
+          <article class="bento-hero-primary">
+            <img src="assets/images/hero_outpost_backpack.jpg" alt="The Outpost Collection" class="bento-hero-img" />
+            <div class="bento-hero-overlay"></div>
 
-          <!-- Hero 3D Pedestal Visual -->
-          <div class="hero-visual">
-            <div class="badge-discount">
-              <span class="badge-discount-label">Save</span>
-              <span class="badge-discount-val">30%</span>
-            </div>
-            <div class="hero-visual-frame">
-              <img src="assets/images/hero_smartwatch.jpg" alt="Smart Watch Pro on Pedestal" width="460" height="460" />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Shop By Category Section -->
-      <section id="categories" class="section">
-        <div class="container">
-          <div class="section-header">
-            <h2 class="section-title">Shop By Category</h2>
-            <a href="#all-categories" class="section-link">
-              <span>View All Categories</span>
-              <svg class="icon-arrow" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" /></svg>
-            </a>
-          </div>
-
-          <div class="categories-grid">
-            <a href="#electronics" class="category-card">
-              <div class="category-media">
-                <img src="assets/images/category_electronics.jpg" alt="Electronics" loading="lazy" />
-              </div>
-              <span class="category-title">Electronics</span>
-            </a>
-            <a href="#fashion" class="category-card">
-              <div class="category-media">
-                <img src="assets/images/category_fashion.jpg" alt="Fashion" loading="lazy" />
-              </div>
-              <span class="category-title">Fashion</span>
-            </a>
-            <a href="#home" class="category-card">
-              <div class="category-media">
-                <img src="assets/images/category_home.jpg" alt="Home & Living" loading="lazy" />
-              </div>
-              <span class="category-title">Home & Living</span>
-            </a>
-            <a href="#beauty" class="category-card">
-              <div class="category-media">
-                <img src="assets/images/category_beauty.jpg" alt="Beauty" loading="lazy" />
-              </div>
-              <span class="category-title">Beauty</span>
-            </a>
-            <a href="#sports" class="category-card">
-              <div class="category-media">
-                <img src="assets/images/category_sports.jpg" alt="Sports" loading="lazy" />
-              </div>
-              <span class="category-title">Sports</span>
-            </a>
-            <a href="#toys" class="category-card">
-              <div class="category-media">
-                <img src="assets/images/category_toys.jpg" alt="Toys & Games" loading="lazy" />
-              </div>
-              <span class="category-title">Toys & Games</span>
-            </a>
-          </div>
-        </div>
-      </section>
-
-      <!-- Best Selling Products Section -->
-      <section id="best-selling" class="section" style="background-color: var(--color-surface-muted);">
-        <div class="container">
-          <div class="section-header">
-            <h2 class="section-title">Best Selling Products</h2>
-            <a href="#all-products" class="section-link">
-              <span>View All Products</span>
-              <svg class="icon-arrow" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" /></svg>
-            </a>
-          </div>
-
-          <div class="products-grid">
-            <!-- Product 1 -->
-            <article class="product-card" data-product-id="1" data-price="129.99">
-              <div class="product-card-top-actions">
-                <button class="btn-icon btn-wishlist" aria-label="Add to wishlist">
-                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
-                </button>
-                <button class="btn-icon btn-quick-cart" aria-label="Quick add">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
-                </button>
-              </div>
-              <div class="product-card-media">
-                <img src="assets/images/product_watch.jpg" alt="Smart Watch Pro" loading="lazy" />
-              </div>
-              <div class="product-card-body">
-                <h3 class="product-name">Smart Watch Pro</h3>
-                <div class="product-rating-row">
-                  <span class="rating-stars">★★★★★</span>
-                  <span class="rating-count">(128)</span>
-                </div>
-                <div class="product-prices">
-                  <span class="price-active">$129.99</span>
-                  <span class="price-strikethrough">$199.99</span>
-                </div>
-                <button class="btn btn-dark btn-full btn-add-cart">Add to Cart</button>
-              </div>
-            </article>
-
-            <!-- Product 2 -->
-            <article class="product-card" data-product-id="2" data-price="89.99">
-              <div class="product-card-top-actions">
-                <button class="btn-icon btn-wishlist" aria-label="Add to wishlist">
-                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
-                </button>
-                <button class="btn-icon btn-quick-cart" aria-label="Quick add">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
-                </button>
-              </div>
-              <div class="product-card-media">
-                <img src="assets/images/product_headphones.jpg" alt="Wireless Headphones" loading="lazy" />
-              </div>
-              <div class="product-card-body">
-                <h3 class="product-name">Wireless Headphones</h3>
-                <div class="product-rating-row">
-                  <span class="rating-stars">★★★★☆</span>
-                  <span class="rating-count">(96)</span>
-                </div>
-                <div class="product-prices">
-                  <span class="price-active">$89.99</span>
-                  <span class="price-strikethrough">$139.99</span>
-                </div>
-                <button class="btn btn-dark btn-full btn-add-cart">Add to Cart</button>
-              </div>
-            </article>
-
-            <!-- Product 3 -->
-            <article class="product-card" data-product-id="3" data-price="59.99">
-              <div class="product-card-top-actions">
-                <button class="btn-icon btn-wishlist" aria-label="Add to wishlist">
-                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
-                </button>
-                <button class="btn-icon btn-quick-cart" aria-label="Quick add">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
-                </button>
-              </div>
-              <div class="product-card-media">
-                <img src="assets/images/product_backpack.jpg" alt="Leather Backpack" loading="lazy" />
-              </div>
-              <div class="product-card-body">
-                <h3 class="product-name">Leather Backpack</h3>
-                <div class="product-rating-row">
-                  <span class="rating-stars">★★★★★</span>
-                  <span class="rating-count">(74)</span>
-                </div>
-                <div class="product-prices">
-                  <span class="price-active">$59.99</span>
-                  <span class="price-strikethrough">$89.99</span>
-                </div>
-                <button class="btn btn-dark btn-full btn-add-cart">Add to Cart</button>
-              </div>
-            </article>
-
-            <!-- Product 4 -->
-            <article class="product-card" data-product-id="4" data-price="66.99">
-              <div class="product-card-top-actions">
-                <button class="btn-icon btn-wishlist" aria-label="Add to wishlist">
-                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
-                </button>
-                <button class="btn-icon btn-quick-cart" aria-label="Quick add">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
-                </button>
-              </div>
-              <div class="product-card-media">
-                <img src="assets/images/product_shoes.jpg" alt="Running Shoes" loading="lazy" />
-              </div>
-              <div class="product-card-body">
-                <h3 class="product-name">Running Shoes</h3>
-                <div class="product-rating-row">
-                  <span class="rating-stars">★★★★☆</span>
-                  <span class="rating-count">(63)</span>
-                </div>
-                <div class="product-prices">
-                  <span class="price-active">$66.99</span>
-                  <span class="price-strikethrough">$119.99</span>
-                </div>
-                <button class="btn btn-dark btn-full btn-add-cart">Add to Cart</button>
-              </div>
-            </article>
-
-            <!-- Product 5 -->
-            <article class="product-card" data-product-id="5" data-price="699.99">
-              <div class="product-card-top-actions">
-                <button class="btn-icon btn-wishlist" aria-label="Add to wishlist">
-                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
-                </button>
-                <button class="btn-icon btn-quick-cart" aria-label="Quick add">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
-                </button>
-              </div>
-              <div class="product-card-media">
-                <img src="assets/images/product_phone.jpg" alt="Smartphone 128GB" loading="lazy" />
-              </div>
-              <div class="product-card-body">
-                <h3 class="product-name">Smartphone 128GB</h3>
-                <div class="product-rating-row">
-                  <span class="rating-stars">★★★★★</span>
-                  <span class="rating-count">(112)</span>
-                </div>
-                <div class="product-prices">
-                  <span class="price-active">$699.99</span>
-                  <span class="price-strikethrough">$899.99</span>
-                </div>
-                <button class="btn btn-dark btn-full btn-add-cart">Add to Cart</button>
-              </div>
-            </article>
-
-            <!-- Product 6 -->
-            <article class="product-card" data-product-id="6" data-price="19.99">
-              <div class="product-card-top-actions">
-                <button class="btn-icon btn-wishlist" aria-label="Add to wishlist">
-                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
-                </button>
-                <button class="btn-icon btn-quick-cart" aria-label="Quick add">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
-                </button>
-              </div>
-              <div class="product-card-media">
-                <img src="assets/images/product_sunglasses.jpg" alt="Sunglasses UV400" loading="lazy" />
-              </div>
-              <div class="product-card-body">
-                <h3 class="product-name">Sunglasses UV400</h3>
-                <div class="product-rating-row">
-                  <span class="rating-stars">★★★★☆</span>
-                  <span class="rating-count">(88)</span>
-                </div>
-                <div class="product-prices">
-                  <span class="price-active">$19.99</span>
-                  <span class="price-strikethrough">$39.99</span>
-                </div>
-                <button class="btn btn-dark btn-full btn-add-cart">Add to Cart</button>
-              </div>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <!-- Flash Sale Promotional Banner with Countdown -->
-      <section id="deals" class="section">
-        <div class="container">
-          <div class="flash-sale-banner">
-            <div class="flash-sale-info">
-              <span class="flash-sale-tag">Limited Time Offer</span>
-              <h2 class="flash-sale-title">Super Sale Up To <span class="discount-tag">50% Off!</span></h2>
-              <p class="flash-sale-desc">On selected items. Shop now before the deal ends.</p>
+            <div class="bento-hero-top">
+              <span class="bento-hero-kicker">FALL 2026 · CHAPTER 03 &nbsp;·&nbsp; The Outpost Collection</span>
             </div>
 
-            <!-- Countdown Timer Units -->
-            <div class="countdown-timer" role="timer" aria-label="Sale countdown">
-              <div class="countdown-box">
-                <span id="timer-days" class="countdown-num">02</span>
-                <span class="countdown-label">Days</span>
-              </div>
-              <div class="countdown-box">
-                <span id="timer-hours" class="countdown-num">14</span>
-                <span class="countdown-label">Hours</span>
-              </div>
-              <div class="countdown-box">
-                <span id="timer-mins" class="countdown-num">37</span>
-                <span class="countdown-label">Mins</span>
-              </div>
-              <div class="countdown-box">
-                <span id="timer-secs" class="countdown-num">59</span>
-                <span class="countdown-label">Secs</span>
-              </div>
-            </div>
-
-            <a href="#best-selling" class="btn btn-primary">Shop The Sale</a>
-          </div>
-        </div>
-      </section>
-
-      <!-- Featured Brands Section -->
-      <section class="brands-section">
-        <div class="container">
-          <h3 class="footer-col-title" style="color: var(--color-text-primary); margin-bottom: var(--space-4);">Our Featured Brands</h3>
-          <div class="brands-container">
-            <span class="brand-item">SAMSUNG</span>
-            <span class="brand-item">NIKE</span>
-            <span class="brand-item">SONY</span>
-            <span class="brand-item">ADIDAS</span>
-            <span class="brand-item">APPLE</span>
-            <span class="brand-item">PUMA</span>
-            <span class="brand-item">PHILIPS</span>
-            <span class="brand-item">BOSCH</span>
-          </div>
-        </div>
-      </section>
-
-      <!-- Split Section: Testimonials & Why Shop With Us -->
-      <section class="section">
-        <div class="container split-grid">
-          <!-- What Our Customers Say -->
-          <div class="card-module">
-            <div>
-              <div class="testimonial-card-header">
-                <h3 class="section-title" style="font-size: 1.15rem;">What Our Customers Say</h3>
-                <span class="testimonial-quote-icon">“</span>
-              </div>
-              <div class="testimonial-user" style="margin-bottom: var(--space-4);">
-                <img src="assets/images/customer_avatar.jpg" alt="Michael Brown" class="testimonial-avatar" />
-                <div>
-                  <h4 id="testimonial-name" style="font-size: 0.95rem; font-weight: bold; color: var(--color-text-primary);">Michael Brown</h4>
-                  <span id="testimonial-role" class="badge badge-verified">Verified Buyer</span>
-                </div>
-              </div>
-              <p id="testimonial-quote" class="testimonial-body">
-                “Amazing quality and fast delivery! The products are exactly as described. Highly recommended!”
+            <div class="bento-hero-bottom">
+              <h1 class="bento-hero-headline">
+                Built For The<br/>
+                Long Way Home.
+              </h1>
+              <p class="bento-hero-sub">
+                An outdoor edit built in two small workshops we visit by name. Patched canvas, oiled leather, and seam-sealed shells.
               </p>
-            </div>
-            <div class="flex items-center justify-between">
-              <div class="rating-stars">★★★★★</div>
-              <div class="testimonial-dots">
-                <span class="testimonial-dot active"></span>
-                <span class="testimonial-dot"></span>
-                <span class="testimonial-dot"></span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Why Shop With Us? -->
-          <div class="card-module">
-            <div>
-              <h3 class="section-title" style="font-size: 1.15rem; margin-bottom: var(--space-2);">Why Shop With Us?</h3>
-              <div class="stats-grid">
-                <div class="stat-item">
-                  <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
-                  <span class="stat-val">10K+</span>
-                  <span class="stat-label">Happy Customers</span>
-                </div>
-                <div class="stat-item">
-                  <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
-                  <span class="stat-val">15K+</span>
-                  <span class="stat-label">Products Sold</span>
-                </div>
-                <div class="stat-item">
-                  <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M8 14s1.5 2 4 2 4-2 4-2"></path><line x1="9" y1="9" x2="9.01" y2="9"></line><line x1="15" y1="9" x2="15.01" y2="9"></line></svg>
-                  <span class="stat-val">99%</span>
-                  <span class="stat-label">Positive Reviews</span>
-                </div>
-                <div class="stat-item">
-                  <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-                  <span class="stat-val">24/7</span>
-                  <span class="stat-label">Customer Support</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Split Section: Newsletter & Instagram Gallery -->
-      <section class="section">
-        <div class="container split-grid">
-          <!-- Subscribe to Newsletter -->
-          <div class="card-module">
-            <div>
-              <h3 class="section-title" style="font-size: 1.15rem;">Subscribe To Our Newsletter</h3>
-              <p style="font-size: 0.875rem; color: var(--color-text-secondary); margin-top: 4px;">
-                Get the latest updates on new products and exclusive offers straight to your inbox.
-              </p>
-              <form id="newsletter-form" class="newsletter-form">
-                <div class="newsletter-input-group">
-                  <input type="email" id="newsletter-email" class="form-input" placeholder="Enter your email address" required />
-                  <button type="submit" class="btn btn-dark">Subscribe</button>
-                </div>
-                <label class="custom-checkbox-label">
-                  <input type="checkbox" id="newsletter-agree" class="custom-checkbox" />
-                  <span>I agree to the <a href="#privacy" style="text-decoration: underline; font-weight: bold;">Privacy Policy</a></span>
-                </label>
-                <div id="newsletter-feedback" style="display: none; font-size: 0.85rem; font-weight: 600;"></div>
-              </form>
-            </div>
-          </div>
-
-          <!-- Follow Us On Instagram -->
-          <div class="card-module">
-            <div>
-              <h3 class="section-title" style="font-size: 1.15rem;">Follow Us On Instagram</h3>
-              <div class="instagram-grid">
-                <div class="instagram-item">
-                  <img src="assets/images/insta_1.jpg" alt="Instagram post" loading="lazy" />
-                </div>
-                <div class="instagram-item">
-                  <img src="assets/images/insta_2.jpg" alt="Instagram post" loading="lazy" />
-                </div>
-                <div class="instagram-item">
-                  <img src="assets/images/insta_3.jpg" alt="Instagram post" loading="lazy" />
-                </div>
-                <div class="instagram-item">
-                  <img src="assets/images/insta_4.jpg" alt="Instagram post" loading="lazy" />
-                </div>
-              </div>
-              <div class="instagram-footer">
-                <span style="font-weight: 700; color: var(--color-text-primary);">@shopcart</span>
-                <a href="#instagram" class="btn btn-dark btn-pill" style="padding: 6px 16px; font-size: 0.85rem;">Follow Us</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Split Section: Latest From Our Blog & FAQ -->
-      <section id="blog" class="section">
-        <div class="container split-grid">
-          <!-- Latest From Our Blog -->
-          <div class="card-module">
-            <div>
-              <div class="section-header" style="margin-bottom: var(--space-4);">
-                <h3 class="section-title" style="font-size: 1.15rem;">Latest From Our Blog</h3>
-                <a href="#all-posts" class="section-link">
-                  <span>View All Posts</span>
-                  <svg class="icon-arrow" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" /></svg>
+              <div class="bento-hero-actions">
+                <a href="#collection-grid" class="bento-btn-primary">
+                  Shop The Outpost <span>→</span>
+                </a>
+                <a href="#anatomy" class="bento-btn-secondary">
+                  View Lookbook <span>↗</span>
                 </a>
               </div>
-              <div class="blog-cards-list">
-                <!-- Blog 1 -->
-                <article class="blog-card">
-                  <div class="blog-card-thumb">
-                    <img src="assets/images/blog_1.jpg" alt="10 Tips to Choose Products" loading="lazy" />
-                  </div>
-                  <div>
-                    <span class="blog-card-date">May 12, 2024</span>
-                    <h4 class="blog-card-title">10 Tips to Choose the Right Products Online</h4>
-                    <a href="#blog-1" class="blog-card-link">Read More →</a>
-                  </div>
-                </article>
-                <!-- Blog 2 -->
-                <article class="blog-card">
-                  <div class="blog-card-thumb">
-                    <img src="assets/images/blog_2.jpg" alt="How to Get Best Deals" loading="lazy" />
-                  </div>
-                  <div>
-                    <span class="blog-card-date">May 13, 2024</span>
-                    <h4 class="blog-card-title">How to Get the Best Deals and Discounts</h4>
-                    <a href="#blog-2" class="blog-card-link">Read More →</a>
-                  </div>
-                </article>
-                <!-- Blog 3 -->
-                <article class="blog-card">
-                  <div class="blog-card-thumb">
-                    <img src="assets/images/blog_3.jpg" alt="Future of E-commerce" loading="lazy" />
-                  </div>
-                  <div>
-                    <span class="blog-card-date">May 15, 2024</span>
-                    <h4 class="blog-card-title">The Future of E-commerce: Trends to Watch</h4>
-                    <a href="#blog-3" class="blog-card-link">Read More →</a>
-                  </div>
-                </article>
-              </div>
             </div>
-          </div>
+          </article>
 
-          <!-- Frequently Asked Questions -->
-          <div class="card-module">
-            <div>
-              <h3 class="section-title" style="font-size: 1.15rem; margin-bottom: var(--space-2);">Frequently Asked Questions</h3>
-              <div class="faq-list">
-                <details class="faq-item" open>
-                  <summary class="faq-summary">
-                    <span>What payment methods do you accept?</span>
-                    <span class="faq-icon">+</span>
-                  </summary>
-                  <div class="faq-content">
-                    We accept Visa, MasterCard, American Express, PayPal, Apple Pay, and Google Pay with bank-grade 256-bit encryption.
-                  </div>
-                </details>
-                <details class="faq-item">
-                  <summary class="faq-summary">
-                    <span>How can I track my order?</span>
-                    <span class="faq-icon">+</span>
-                  </summary>
-                  <div class="faq-content">
-                    Once your order ships, you will receive an email confirmation with your tracking number and a real-time carrier link.
-                  </div>
-                </details>
-                <details class="faq-item">
-                  <summary class="faq-summary">
-                    <span>What is your return policy?</span>
-                    <span class="faq-icon">+</span>
-                  </summary>
-                  <div class="faq-content">
-                    We offer a 30-day hassle-free money-back guarantee. If you are not satisfied, return it for a full refund or exchange.
-                  </div>
-                </details>
-                <details class="faq-item">
-                  <summary class="faq-summary">
-                    <span>Do you ship internationally?</span>
-                    <span class="faq-icon">+</span>
-                  </summary>
-                  <div class="faq-content">
-                    Yes! We provide reliable international shipping to over 100 countries worldwide with expedited courier partners.
-                  </div>
-                </details>
+          <!-- RIGHT 2x2 QUAD GRID -->
+          <div class="bento-quad-grid">
+            
+            <!-- Card 1: Sundown Weekender -->
+            <article class="bento-card-photo">
+              <img src="assets/images/hero_sundown_weekender.jpg" alt="Sundown Weekender" class="bento-card-bg-img" />
+              <div class="bento-card-gradient"></div>
+
+              <div class="bento-card-top">
+                <span class="bento-card-pill">New</span>
               </div>
-            </div>
+
+              <div class="bento-card-bottom">
+                <div class="bento-card-meta">
+                  <h3 class="bento-card-name">Sundown Weekender</h3>
+                  <span class="bento-card-price">$224</span>
+                </div>
+                <button class="bento-quick-add-btn" aria-label="Quick add Sundown Weekender" onclick="store.addToCart({ id: '3', title: 'Sundown Weekender', price: 224, image: 'assets/images/hero_sundown_weekender.jpg' })">
+                  +
+                </button>
+              </div>
+            </article>
+
+            <!-- Card 2: Wayfarer Daypack -->
+            <article class="bento-card-photo">
+              <img src="assets/images/hero_wayfarer_daypack.jpg" alt="Wayfarer Daypack" class="bento-card-bg-img" />
+              <div class="bento-card-gradient"></div>
+
+              <div class="bento-card-top">
+                <span class="bento-card-pill pill-danger">20% Off</span>
+              </div>
+
+              <div class="bento-card-bottom">
+                <div class="bento-card-meta">
+                  <h3 class="bento-card-name">Wayfarer Daypack</h3>
+                  <div class="bento-card-price-row">
+                    <span class="bento-card-price">$148</span>
+                    <span class="bento-card-compare">$185</span>
+                  </div>
+                </div>
+                <button class="bento-quick-add-btn" aria-label="Quick add Wayfarer Daypack" onclick="store.addToCart({ id: '3', title: 'Wayfarer Daypack', price: 148, image: 'assets/images/hero_wayfarer_daypack.jpg' })">
+                  +
+                </button>
+              </div>
+            </article>
+
+            <!-- Card 3: Field Shell Jacket -->
+            <article class="bento-card-photo">
+              <img src="assets/images/hero_field_jacket.jpg" alt="Field Shell Jacket" class="bento-card-bg-img" />
+              <div class="bento-card-gradient"></div>
+
+              <div class="bento-card-top">
+                <!-- Spacing placeholder -->
+              </div>
+
+              <div class="bento-card-bottom">
+                <div class="bento-card-meta">
+                  <h3 class="bento-card-name">Field Shell Jacket</h3>
+                  <span class="bento-card-price">$185</span>
+                </div>
+                <button class="bento-quick-add-btn" aria-label="Quick add Field Shell Jacket" onclick="store.addToCart({ id: '4', title: 'Field Shell Jacket', price: 185, image: 'assets/images/hero_field_jacket.jpg' })">
+                  +
+                </button>
+              </div>
+            </article>
+
+            <!-- Card 4: Limited Time Up To 40% Off Promo -->
+            <article class="bento-card-promo">
+              <div class="bento-promo-top">
+                <span class="bento-promo-kicker">LIMITED TIME</span>
+                <h3 class="bento-promo-title">
+                  Up To<br/>
+                  40% Off
+                </h3>
+              </div>
+
+              <div class="bento-promo-bottom">
+                <div class="bento-promo-notice">
+                  <span>Fall Sale ends</span>
+                  <span>Sunday</span>
+                </div>
+                <a href="#flash-sale" class="bento-promo-link">
+                  <span>Shop The Sale</span>
+                  <span>→</span>
+                </a>
+              </div>
+            </article>
+
           </div>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <!-- Value Proposition Strip -->
-      <section class="value-strip">
-        <div class="container value-strip-grid">
-          <div class="value-strip-item">
-            <svg class="value-strip-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
-            <div class="value-strip-text">
-              <strong>Secure Checkout</strong>
-              <span>100% Protected</span>
-            </div>
-          </div>
-          <div class="value-strip-item">
-            <svg class="value-strip-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>
-            <div class="value-strip-text">
-              <strong>Easy Returns</strong>
-              <span>30-Day Policy</span>
-            </div>
-          </div>
-          <div class="value-strip-item">
-            <svg class="value-strip-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
-            <div class="value-strip-text">
-              <strong>Quality Guarantee</strong>
-              <span>Premium Products</span>
-            </div>
-          </div>
-          <div class="value-strip-item">
-            <svg class="value-strip-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
-            <div class="value-strip-text">
-              <strong>Fast Delivery</strong>
-              <span>Worldwide Shipping</span>
-            </div>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <!-- Mega Footer -->
-    <footer class="footer-global" role="contentinfo">
+    <!-- 2. High-Quality Collections Cards (Under Hero Section) -->
+    <section class="collections-section" aria-label="Collections Showcase">
       <div class="container">
-        <div class="footer-columns">
-          <!-- Col 1: Brand Info -->
+        <div class="collections-header">
           <div>
-            <a href="#" class="header-logo" style="color: #fff; margin-bottom: var(--space-3);">
-              <svg class="header-logo-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M19 6h-2c0-2.76-2.24-5-5-5S7 3.24 7 6H5c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-7-3c1.66 0 3 1.34 3 3H9c0-1.66 1.34-3 3-3zm7 17H5V8h14v12z"/></svg>
-              <span>ShopCart</span>
+            <span class="badge badge-accent">SIGNATURE ARCHITECTURE</span>
+            <h2 style="font-size: var(--font-size-h1); font-weight: 800; margin-top: 6px;">Explore By Collection</h2>
+            <p style="color: var(--color-text-secondary); margin-top: 4px;">Purpose-built essentials designed for durability, minimalism, and daily performance.</p>
+          </div>
+          <a href="#collection-grid" class="btn btn-outline btn-sm">View Full Catalog →</a>
+        </div>
+
+        <div class="collections-grid">
+          <!-- Collection 1: Smart Wearables -->
+          <a href="#collection-grid" onclick="filterCategory('tech')" class="collection-card">
+            <div class="collection-card-media">
+              <span class="badge badge-dark collection-badge">FLAGSHIP</span>
+              <img src="assets/images/product_watch.jpg" alt="Smart Wearables Collection" loading="lazy" />
+            </div>
+            <div class="collection-card-body">
+              <div>
+                <span class="collection-kicker">COLLECTION 01</span>
+                <h3 class="collection-title">Smart Wearables</h3>
+                <p class="collection-desc">Aerospace titanium frames, sapphire crystal lenses & continuous PPG bio-sensors.</p>
+              </div>
+              <span class="collection-action-link">Explore Wearables <span>→</span></span>
+            </div>
+          </a>
+
+          <!-- Collection 2: Everyday Carry -->
+          <a href="#collection-grid" onclick="filterCategory('carry')" class="collection-card">
+            <div class="collection-card-media">
+              <span class="badge badge-accent collection-badge">ECO LEATHER</span>
+              <img src="assets/images/product_backpack.jpg" alt="Everyday Carry Collection" loading="lazy" />
+            </div>
+            <div class="collection-card-body">
+              <div>
+                <span class="collection-kicker">COLLECTION 02</span>
+                <h3 class="collection-title">Everyday Carry</h3>
+                <p class="collection-desc">Weatherproof ballistic nylon, YKK AquaGuard zippers & vegetable-tanned leather.</p>
+              </div>
+              <span class="collection-action-link">Explore Carry <span>→</span></span>
+            </div>
+          </a>
+
+          <!-- Collection 3: Studio Audio -->
+          <a href="#collection-grid" onclick="filterCategory('audio')" class="collection-card">
+            <div class="collection-card-media">
+              <span class="badge badge-dark collection-badge">HI-RES AUDIO</span>
+              <img src="assets/images/product_headphones.jpg" alt="Studio Audio Collection" loading="lazy" />
+            </div>
+            <div class="collection-card-body">
+              <div>
+                <span class="collection-kicker">COLLECTION 03</span>
+                <h3 class="collection-title">Studio Acoustics</h3>
+                <p class="collection-desc">40mm bio-cellulose drivers, 42dB hybrid noise cancelling & memory foam cushions.</p>
+              </div>
+              <span class="collection-action-link">Explore Acoustics <span>→</span></span>
+            </div>
+          </a>
+
+          <!-- Collection 4: Polarized Optics -->
+          <a href="#collection-grid" onclick="filterCategory('eyewear')" class="collection-card">
+            <div class="collection-card-media">
+              <span class="badge badge-save collection-badge">BUY 1 GET 2</span>
+              <img src="assets/images/product_sunglasses.jpg" alt="Polarized Eyewear Collection" loading="lazy" />
+            </div>
+            <div class="collection-card-body">
+              <div>
+                <span class="collection-kicker">COLLECTION 04</span>
+                <h3 class="collection-title">Polarized Eyewear</h3>
+                <p class="collection-desc">Glare-reducing UV400 polarized lenses with all-inclusive lost & broken warranty.</p>
+              </div>
+              <span class="collection-action-link">Explore Eyewear <span>→</span></span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tabbed Product Collection Showcase (FashionNova + Shein + Bellroy) -->
+    <section id="collection-grid" class="section">
+      <div class="container">
+        <div class="collection-tabs-wrap">
+          <div>
+            <span class="badge badge-accent">CURATED CATALOG</span>
+            <h2 style="font-size: var(--font-size-h1); font-weight: 800; margin-top: 6px;">Curated Everyday Essentials</h2>
+          </div>
+          
+          <div class="collection-tabs" role="tablist">
+            <button class="tab-pill active" data-tab="all" role="tab">All Essentials</button>
+            <button class="tab-pill" data-tab="trending" role="tab">Trending Now</button>
+            <button class="tab-pill" data-tab="bestseller" role="tab">Best Sellers</button>
+            <button class="tab-pill" data-tab="tech" role="tab">Wearables</button>
+            <button class="tab-pill" data-tab="audio" role="tab">Audio</button>
+            <button class="tab-pill" data-tab="carry" role="tab">Bags & Carry</button>
+            <button class="tab-pill" data-tab="eyewear" role="tab">Eyewear</button>
+          </div>
+        </div>
+
+        <div class="products-grid">
+          <!-- Product 1: Smart Watch Pro -->
+          <article class="product-card" data-category="tech trending bestseller" data-product-id="1" data-price="129.99">
+            <div class="card-top-tags">
+              <span class="badge badge-dark">BESTSELLER</span>
+              <span class="badge badge-save">SAVE 35%</span>
+            </div>
+            <div class="card-quick-actions">
+              <button class="btn-icon btn-wishlist" aria-label="Add to wishlist">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+              </button>
+            </div>
+            <div class="product-media product-card-media">
+              <img src="assets/images/product_watch.jpg" alt="Smart Watch Pro" loading="lazy" />
+            </div>
+            <div class="product-info">
+              <div class="rating-stars">★★★★★ <span class="rating-count">(4,820)</span></div>
+              <h3 class="product-title product-name">Smart Watch Pro (Titanium)</h3>
+              
+              <!-- Color Swatch Dots -->
+              <div class="swatch-picker">
+                <span class="swatch-dot active" style="background: #0F172A;" title="Midnight Black"></span>
+                <span class="swatch-dot" style="background: #94A3B8;" title="Titanium Silver"></span>
+                <span class="swatch-dot" style="background: #D97706;" title="Desert Sand"></span>
+              </div>
+
+              <div class="product-price-row">
+                <span class="price-current">$129.99</span>
+                <span class="price-original">$199.99</span>
+                <span class="price-save-badge">Save $70</span>
+              </div>
+
+              <div class="scarcity-box">
+                <div class="scarcity-label">
+                  <span>⚡ Only 4 left</span>
+                  <span>92% Claimed</span>
+                </div>
+                <div class="scarcity-track">
+                  <div class="scarcity-fill" style="width: 92%;"></div>
+                </div>
+              </div>
+
+              <button class="btn btn-dark btn-full btn-add-cart" style="margin-top: 12px;">Add to Cart</button>
+            </div>
+          </article>
+
+          <!-- Product 2: Wireless Studio Headphones -->
+          <article class="product-card" data-category="audio trending" data-product-id="2" data-price="89.99">
+            <div class="card-top-tags">
+              <span class="badge badge-accent">STUDIO GRADE</span>
+            </div>
+            <div class="card-quick-actions">
+              <button class="btn-icon btn-wishlist" aria-label="Add to wishlist">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+              </button>
+            </div>
+            <div class="product-media product-card-media">
+              <img src="assets/images/product_headphones.jpg" alt="Wireless Studio Headphones" loading="lazy" />
+            </div>
+            <div class="product-info">
+              <div class="rating-stars">★★★★★ <span class="rating-count">(2,110)</span></div>
+              <h3 class="product-title product-name">Wireless Studio Headphones</h3>
+              
+              <div class="swatch-picker">
+                <span class="swatch-dot active" style="background: #1E293B;" title="Matte Obsidian"></span>
+                <span class="swatch-dot" style="background: #E2E8F0;" title="Chalk White"></span>
+              </div>
+
+              <div class="product-price-row">
+                <span class="price-current">$89.99</span>
+                <span class="price-original">$139.99</span>
+                <span class="price-save-badge">Save $50</span>
+              </div>
+
+              <div class="scarcity-box">
+                <div class="scarcity-label">
+                  <span>⚡ In High Demand</span>
+                  <span>78% Claimed</span>
+                </div>
+                <div class="scarcity-track">
+                  <div class="scarcity-fill" style="width: 78%;"></div>
+                </div>
+              </div>
+
+              <button class="btn btn-dark btn-full btn-add-cart" style="margin-top: 12px;">Add to Cart</button>
+            </div>
+          </article>
+
+          <!-- Product 3: Full-Grain Leather Backpack -->
+          <article class="product-card" data-category="carry bestseller" data-product-id="3" data-price="59.99">
+            <div class="card-top-tags">
+              <span class="badge badge-dark">ECO LEATHER</span>
+            </div>
+            <div class="card-quick-actions">
+              <button class="btn-icon btn-wishlist" aria-label="Add to wishlist">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+              </button>
+            </div>
+            <div class="product-media product-card-media">
+              <img src="assets/images/product_backpack.jpg" alt="Full-Grain Leather Backpack" loading="lazy" />
+            </div>
+            <div class="product-info">
+              <div class="rating-stars">★★★★★ <span class="rating-count">(3,440)</span></div>
+              <h3 class="product-title product-name">Full-Grain Leather Backpack</h3>
+              
+              <div class="swatch-picker">
+                <span class="swatch-dot active" style="background: #78350F;" title="Cognac Brown"></span>
+                <span class="swatch-dot" style="background: #0F172A;" title="Pitch Black"></span>
+              </div>
+
+              <div class="product-price-row">
+                <span class="price-current">$59.99</span>
+                <span class="price-original">$89.99</span>
+                <span class="price-save-badge">Save $30</span>
+              </div>
+
+              <div class="scarcity-box">
+                <div class="scarcity-label">
+                  <span>⚡ Only 7 left</span>
+                  <span>84% Claimed</span>
+                </div>
+                <div class="scarcity-track">
+                  <div class="scarcity-fill" style="width: 84%;"></div>
+                </div>
+              </div>
+
+              <button class="btn btn-dark btn-full btn-add-cart" style="margin-top: 12px;">Add to Cart</button>
+            </div>
+          </article>
+
+          <!-- Product 4: Polarized Sunglasses UV400 -->
+          <article class="product-card" data-category="eyewear trending bestseller" data-product-id="6" data-price="19.99">
+            <div class="card-top-tags">
+              <span class="badge badge-save">BUY 1 GET 2</span>
+            </div>
+            <div class="card-quick-actions">
+              <button class="btn-icon btn-wishlist" aria-label="Add to wishlist">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+              </button>
+            </div>
+            <div class="product-media product-card-media">
+              <img src="assets/images/product_sunglasses.jpg" alt="Polarized Sunglasses UV400" loading="lazy" />
+            </div>
+            <div class="product-info">
+              <div class="rating-stars">★★★★★ <span class="rating-count">(6,900)</span></div>
+              <h3 class="product-title product-name">Polarized Sunglasses UV400</h3>
+              
+              <div class="swatch-picker">
+                <span class="swatch-dot active" style="background: #0F172A;" title="Gloss Black"></span>
+                <span class="swatch-dot" style="background: #475569;" title="Tortoise Matte"></span>
+              </div>
+
+              <div class="product-price-row">
+                <span class="price-current">$19.99</span>
+                <span class="price-original">$39.99</span>
+                <span class="price-save-badge">Save 50%</span>
+              </div>
+
+              <div class="scarcity-box">
+                <div class="scarcity-label">
+                  <span>⚡ High Velocity</span>
+                  <span>95% Claimed</span>
+                </div>
+                <div class="scarcity-track">
+                  <div class="scarcity-fill" style="width: 95%;"></div>
+                </div>
+              </div>
+
+              <button class="btn btn-dark btn-full btn-add-cart" style="margin-top: 12px;">Add to Cart</button>
+            </div>
+          </article>
+
+          <!-- Product 5: Performance Running Shoes -->
+          <article class="product-card" data-category="trending carry bestseller" data-product-id="4" data-price="66.99">
+            <div class="card-top-tags">
+              <span class="badge badge-dark">DYNAMIC FOAM</span>
+            </div>
+            <div class="card-quick-actions">
+              <button class="btn-icon btn-wishlist" aria-label="Add to wishlist">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+              </button>
+            </div>
+            <div class="product-media product-card-media">
+              <img src="assets/images/product_shoes.jpg" alt="Performance Running Footwear" loading="lazy" />
+            </div>
+            <div class="product-info">
+              <div class="rating-stars">★★★★★ <span class="rating-count">(1,840)</span></div>
+              <h3 class="product-title product-name">Performance Running Shoes</h3>
+              
+              <div class="swatch-picker">
+                <span class="swatch-dot active" style="background: #0F172A;" title="Obsidian Mesh"></span>
+                <span class="swatch-dot" style="background: #E2E8F0;" title="Cloud White"></span>
+              </div>
+
+              <div class="product-price-row">
+                <span class="price-current">$66.99</span>
+                <span class="price-original">$119.99</span>
+                <span class="price-save-badge">Save $53</span>
+              </div>
+
+              <div class="scarcity-box">
+                <div class="scarcity-label">
+                  <span>⚡ Only 5 left</span>
+                  <span>89% Claimed</span>
+                </div>
+                <div class="scarcity-track">
+                  <div class="scarcity-fill" style="width: 89%;"></div>
+                </div>
+              </div>
+
+              <button class="btn btn-dark btn-full btn-add-cart" style="margin-top: 12px;">Add to Cart</button>
+            </div>
+          </article>
+
+          <!-- Product 6: Titanium Smartphone 128GB -->
+          <article class="product-card" data-category="tech bestseller trending" data-product-id="5" data-price="699.99">
+            <div class="card-top-tags">
+              <span class="badge badge-accent">FLAGSHIP TIER</span>
+            </div>
+            <div class="card-quick-actions">
+              <button class="btn-icon btn-wishlist" aria-label="Add to wishlist">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+              </button>
+            </div>
+            <div class="product-media product-card-media">
+              <img src="assets/images/product_phone.jpg" alt="Titanium Smartphone 128GB" loading="lazy" />
+            </div>
+            <div class="product-info">
+              <div class="rating-stars">★★★★★ <span class="rating-count">(5,120)</span></div>
+              <h3 class="product-title product-name">Titanium Smartphone 128GB</h3>
+              
+              <div class="swatch-picker">
+                <span class="swatch-dot active" style="background: #1E293B;" title="Natural Titanium"></span>
+                <span class="swatch-dot" style="background: #0F172A;" title="Black Titanium"></span>
+              </div>
+
+              <div class="product-price-row">
+                <span class="price-current">$699.99</span>
+                <span class="price-original">$899.99</span>
+                <span class="price-save-badge">Save $200</span>
+              </div>
+
+              <div class="scarcity-box">
+                <div class="scarcity-label">
+                  <span>⚡ In Stock</span>
+                  <span>96% Claimed</span>
+                </div>
+                <div class="scarcity-track">
+                  <div class="scarcity-fill" style="width: 96%;"></div>
+                </div>
+              </div>
+
+              <button class="btn btn-dark btn-full btn-add-cart" style="margin-top: 12px;">Add to Cart</button>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Deals of the Week (Screenshot 3 Benchmark: 5 Product Cards + 2 Banners) -->
+    <section id="deals-of-week" class="deals-week-section" aria-label="Deals of the Week">
+      <div class="container">
+        <!-- Header -->
+        <div class="deals-header">
+          <h2 class="deals-title">Deals of the Week</h2>
+          <a href="#collection-grid" class="deals-view-all">View All Deals →</a>
+        </div>
+
+        <!-- 5-Product Card Grid (Using Exact Same Product Card UI) -->
+        <div class="deals-5-grid">
+          <!-- Deal 1: Apple AirPods Pro 2nd Gen (-20%) -->
+          <article class="product-card" data-category="audio deals" data-product-id="deal-1" data-price="189.00">
+            <div class="card-top-tags">
+              <span class="badge" style="background: #ef4444; color: #fff; font-weight: 700; border-radius: 4px; padding: 3px 7px; font-size: 11px;">-20%</span>
+            </div>
+            <div class="card-quick-actions">
+              <button class="btn-icon btn-wishlist" aria-label="Add to wishlist">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+              </button>
+            </div>
+            <div class="product-media product-card-media">
+              <img src="assets/images/deals_airpods.jpg" alt="Apple AirPods Pro 2nd Gen" loading="lazy" />
+            </div>
+            <div class="product-info">
+              <h3 class="product-title product-name">Apple AirPods Pro 2nd Gen</h3>
+              <div class="product-price-row">
+                <span class="price-current">$189.00</span>
+                <span class="price-original">$249.00</span>
+              </div>
+              <button class="btn-add-deal btn-add-cart">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                Add to Cart
+              </button>
+            </div>
+          </article>
+
+          <!-- Deal 2: Apple Watch Ultra 2 (-15%) -->
+          <article class="product-card" data-category="tech deals" data-product-id="deal-2" data-price="679.00">
+            <div class="card-top-tags">
+              <span class="badge" style="background: #ef4444; color: #fff; font-weight: 700; border-radius: 4px; padding: 3px 7px; font-size: 11px;">-15%</span>
+            </div>
+            <div class="card-quick-actions">
+              <button class="btn-icon btn-wishlist" aria-label="Add to wishlist">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+              </button>
+            </div>
+            <div class="product-media product-card-media">
+              <img src="assets/images/deals_watch_ultra.jpg" alt="Apple Watch Ultra 2" loading="lazy" />
+            </div>
+            <div class="product-info">
+              <h3 class="product-title product-name">Apple Watch Ultra 2</h3>
+              <div class="product-price-row">
+                <span class="price-current">$679.00</span>
+                <span class="price-original">$799.00</span>
+              </div>
+              <button class="btn-add-deal btn-add-cart">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                Add to Cart
+              </button>
+            </div>
+          </article>
+
+          <!-- Deal 3: Sony WH-1000XM5 (-18%) -->
+          <article class="product-card" data-category="audio deals" data-product-id="deal-3" data-price="329.00">
+            <div class="card-top-tags">
+              <span class="badge" style="background: #ef4444; color: #fff; font-weight: 700; border-radius: 4px; padding: 3px 7px; font-size: 11px;">-18%</span>
+            </div>
+            <div class="card-quick-actions">
+              <button class="btn-icon btn-wishlist" aria-label="Add to wishlist">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+              </button>
+            </div>
+            <div class="product-media product-card-media">
+              <img src="assets/images/deals_sony_headphones.jpg" alt="Sony WH-1000XM5" loading="lazy" />
+            </div>
+            <div class="product-info">
+              <h3 class="product-title product-name">Sony WH-1000XM5</h3>
+              <div class="product-price-row">
+                <span class="price-current">$329.00</span>
+                <span class="price-original">$399.00</span>
+              </div>
+              <button class="btn-add-deal btn-add-cart">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                Add to Cart
+              </button>
+            </div>
+          </article>
+
+          <!-- Deal 4: MacBook Air M3 Chip (-22%) -->
+          <article class="product-card" data-category="tech deals" data-product-id="deal-4" data-price="1099.00">
+            <div class="card-top-tags">
+              <span class="badge" style="background: #ef4444; color: #fff; font-weight: 700; border-radius: 4px; padding: 3px 7px; font-size: 11px;">-22%</span>
+            </div>
+            <div class="card-quick-actions">
+              <button class="btn-icon btn-wishlist" aria-label="Add to wishlist">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+              </button>
+            </div>
+            <div class="product-media product-card-media">
+              <img src="assets/images/deals_macbook.jpg" alt="MacBook Air M3 Chip" loading="lazy" />
+            </div>
+            <div class="product-info">
+              <h3 class="product-title product-name">MacBook Air M3 Chip</h3>
+              <div class="product-price-row">
+                <span class="price-current">$1,099.00</span>
+                <span class="price-original">$1,399.00</span>
+              </div>
+              <button class="btn-add-deal btn-add-cart">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                Add to Cart
+              </button>
+            </div>
+          </article>
+
+          <!-- Deal 5: Samsung Galaxy S24 Ultra (-16%) -->
+          <article class="product-card" data-category="tech deals" data-product-id="deal-5" data-price="1049.00">
+            <div class="card-top-tags">
+              <span class="badge" style="background: #ef4444; color: #fff; font-weight: 700; border-radius: 4px; padding: 3px 7px; font-size: 11px;">-16%</span>
+            </div>
+            <div class="card-quick-actions">
+              <button class="btn-icon btn-wishlist" aria-label="Add to wishlist">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+              </button>
+            </div>
+            <div class="product-media product-card-media">
+              <img src="assets/images/deals_s24_ultra.jpg" alt="Samsung Galaxy S24 Ultra" loading="lazy" />
+            </div>
+            <div class="product-info">
+              <h3 class="product-title product-name">Samsung Galaxy S24 Ultra</h3>
+              <div class="product-price-row">
+                <span class="price-current">$1,049.00</span>
+                <span class="price-original">$1,249.00</span>
+              </div>
+              <button class="btn-add-deal btn-add-cart">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                Add to Cart
+              </button>
+            </div>
+          </article>
+        </div>
+
+        <!-- Two Promotional Banners (Exact Screenshot 3 Replica) -->
+        <div class="deals-banners-grid">
+          <!-- Banner 1: Upgrade Your Workspace (Dark) -->
+          <div class="deals-banner-card deals-banner-dark">
+            <div class="deals-banner-content">
+              <h3 class="deals-banner-title">Upgrade Your<br/>Workspace</h3>
+              <p class="deals-banner-desc">Discover premium laptops for ultimate productivity.</p>
+              <a href="#collection-grid" class="deals-banner-btn">Shop Laptops →</a>
+            </div>
+            <img src="assets/images/deals_banner_laptop.jpg" alt="Upgrade Your Workspace" class="deals-banner-img" />
+          </div>
+
+          <!-- Banner 2: Sound That Inspires (Light) -->
+          <div class="deals-banner-card deals-banner-light">
+            <div class="deals-banner-content">
+              <h3 class="deals-banner-title">Sound That<br/>Inspires</h3>
+              <p class="deals-banner-desc">Premium audio. Immersive sound experience.</p>
+              <a href="#collection-grid" class="deals-banner-btn">Shop Audio →</a>
+            </div>
+            <img src="assets/images/deals_banner_audio.jpg" alt="Sound That Inspires" class="deals-banner-img" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Top Brands Strip (Screenshot 4 Benchmark) -->
+    <section id="top-brands" class="top-brands-section" aria-label="Top Brands">
+      <div class="container">
+        <div class="top-brands-header">
+          <h2 class="top-brands-title">Top Brands</h2>
+          <a href="#collection-grid" class="top-brands-view-all">View All Brands →</a>
+        </div>
+
+        <div class="top-brands-strip">
+          <!-- 1. Apple -->
+          <div class="top-brand-item" title="Apple">
+            <svg class="top-brand-svg" style="height: 32px;" viewBox="0 0 170 170" fill="currentColor">
+              <path d="M150.37 130.25c-2.45 5.66-5.35 10.87-8.71 15.66-4.58 6.53-8.33 11.05-11.22 13.56-4.48 4.12-9.28 6.23-14.42 6.35-3.69 0-8.14-1.05-13.32-3.18-5.19-2.12-9.97-3.17-14.34-3.17-4.58 0-9.49 1.05-14.75 3.17-5.26 2.13-9.5 3.24-12.74 3.35-4.35.13-9.16-1.9-14.42-6.08-3.7-3.04-7.7-7.85-12-14.42-6.85-10.45-12.1-22.38-15.75-35.79-3.65-13.41-5.48-25.77-5.48-37.07 0-14.28 3.51-26.04 10.53-35.28 7.02-9.24 16.03-13.98 27.03-14.22 5.09 0 10.74 1.34 16.96 4.02 6.22 2.68 10.15 4.07 11.79 4.17 1.83 0 5.92-1.46 12.28-4.38 6.36-2.92 11.96-4.23 16.8-3.93 12.38.74 22.35 5.28 29.91 13.62-10.77 6.53-16.03 15.54-15.79 27.03.24 8.97 3.56 16.48 9.97 22.53 6.41 6.05 13.98 9.61 22.7 10.68-2.3 6.74-5.06 13.54-8.29 20.4zM119.22 33.64c0-7.22 2.64-13.9 7.92-20.04 5.28-6.14 11.83-10.05 19.65-11.73.53 1.48.8 2.94.8 4.38 0 7.35-2.82 14.15-8.46 20.4-5.64 6.25-12.38 9.9-20.22 10.95-.53-1.37-.8-2.69-.8-3.96z"/>
+            </svg>
+          </div>
+
+          <!-- 2. Samsung -->
+          <div class="top-brand-item" title="Samsung">
+            <svg class="top-brand-svg" style="height: 18px; max-width: 96px;" viewBox="0 0 160 26" fill="currentColor">
+              <text x="0" y="21" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="900" font-size="22" letter-spacing="2">SAMSUNG</text>
+            </svg>
+          </div>
+
+          <!-- 3. Sony -->
+          <div class="top-brand-item" title="Sony">
+            <svg class="top-brand-svg" style="height: 20px; max-width: 86px;" viewBox="0 0 130 26" fill="currentColor">
+              <text x="0" y="21" font-family="'Times New Roman', Georgia, serif" font-weight="900" font-size="26" letter-spacing="3.5">SONY</text>
+            </svg>
+          </div>
+
+          <!-- 4. Bose -->
+          <div class="top-brand-item" title="Bose">
+            <svg class="top-brand-svg" style="height: 20px; max-width: 86px;" viewBox="0 0 120 26" fill="currentColor">
+              <text x="0" y="21" font-family="-apple-system, sans-serif" font-weight="900" font-style="italic" font-size="25" letter-spacing="-0.5">BOSE</text>
+            </svg>
+          </div>
+
+          <!-- 5. Dell -->
+          <div class="top-brand-item" title="Dell">
+            <svg class="top-brand-svg" style="height: 22px; max-width: 80px;" viewBox="0 0 100 24" fill="currentColor">
+              <path d="M12.5 0H0v24h12.5c6.9 0 12.5-5.4 12.5-12S19.4 0 12.5 0zm0 18.5H5.8V5.5h6.7c3.9 0 6.8 2.9 6.8 6.5s-2.9 6.5-6.8 6.5zM48 4.2l-1.9 4.3-7.5-3.3 4.2 9.5-6.5-2.8-3.4 7.7 18.5 8.1 4.5-10.2-6.5-2.9 2.4-5.4 6.7 3 2.1-4.8-12.6-6.1zm22.4-4.2h-5.8v24h18.2v-5.5h-12.4V0zm23.8 0h-5.8v24h18.2v-5.5H94.2V0z"/>
+            </svg>
+          </div>
+
+          <!-- 6. HP -->
+          <div class="top-brand-item" title="HP">
+            <svg class="top-brand-svg" style="height: 36px; width: 36px;" viewBox="0 0 100 100" fill="currentColor">
+              <circle cx="50" cy="50" r="46" fill="none" stroke="currentColor" stroke-width="6"/>
+              <path d="M37 20l-15 60h9l4-16h9c8 0 14-5 16-13 2-8-2-13-10-13h-6l2-8h6c12 0 19 6 16 18-2 8-8 14-15 15l-3 12h10l-15 60h9l15-60h-9l-3 12c4-7 10-12 18-12 8 0 14 5 12 13-2 8-8 15-16 15h-9l-4 16h-9l15-60z" fill="currentColor"/>
+            </svg>
+          </div>
+
+          <!-- 7. LG -->
+          <div class="top-brand-item" title="LG">
+            <svg class="top-brand-svg" style="height: 26px; max-width: 80px;" viewBox="0 0 110 34" fill="currentColor">
+              <circle cx="17" cy="17" r="14" fill="none" stroke="currentColor" stroke-width="2.6"/>
+              <circle cx="11.5" cy="13.5" r="2" fill="currentColor"/>
+              <path d="M21 9v11h-9" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+              <text x="42" y="25" font-family="-apple-system, sans-serif" font-weight="900" font-size="24" letter-spacing="2">LG</text>
+            </svg>
+          </div>
+
+          <!-- 8. Asus -->
+          <div class="top-brand-item" title="Asus">
+            <svg class="top-brand-svg" style="height: 20px; max-width: 86px;" viewBox="0 0 120 26" fill="currentColor">
+              <text x="0" y="21" font-family="-apple-system, sans-serif" font-weight="900" font-size="25" letter-spacing="4">ASUS</text>
+              <line x1="1" y1="12" x2="119" y2="12" stroke="#FAFAFA" stroke-width="2.5"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. Flash Deals Countdown & Showcase (Screenshot 5 Benchmark) -->
+    <section id="flash-deals" class="flash-deals-section" aria-label="Flash Deals">
+      <div class="container">
+        <div class="flash-deals-banner">
+          
+          <!-- Left Column: Kicker, Heading, Live Countdown, Link -->
+          <div class="flash-info-col">
+            <div class="flash-kicker">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+              <span>FLASH DEALS</span>
+            </div>
+            
+            <h2 class="flash-headline">Limited time.<br/>Unbeatable prices.</h2>
+
+            <!-- Countdown Timer Blocks -->
+            <div class="flash-countdown-container">
+              <div class="flash-time-digit" id="flash-hours">08</div>
+              <span class="flash-time-colon">:</span>
+              <div class="flash-time-digit" id="flash-mins">45</div>
+              <span class="flash-time-colon">:</span>
+              <div class="flash-time-digit" id="flash-secs">32</div>
+            </div>
+            <div class="flash-countdown-labels">
+              <span>HRS</span>
+              <span>MINS</span>
+              <span>SECS</span>
+            </div>
+
+            <!-- View All Deals CTA -->
+            <a href="#deals-of-week" class="flash-all-link">
+              VIEW ALL DEALS →
             </a>
-            <p style="font-size: 0.85rem; line-height: 1.6; margin-bottom: var(--space-4);">
-              Your one-stop shop for top-quality products at the best prices. Shop smart, live better.
+          </div>
+
+          <!-- Right Column: 3 White Product Cards -->
+          <div class="flash-cards-grid">
+            <!-- Flash Card 1: Nexora Buds A1 -->
+            <article class="flash-card">
+              <span class="flash-discount-badge">-23%</span>
+              <div class="flash-card-media">
+                <img src="assets/images/flash_earbuds.jpg" alt="Nexora Buds A1" loading="lazy" />
+              </div>
+              <h4 class="flash-card-title">Nexora Buds A1</h4>
+              <div class="flash-card-sub">True Wireless Earbuds</div>
+              <div class="flash-card-bottom">
+                <div class="flash-price-wrap">
+                  <span class="flash-price-current">$39.99</span>
+                  <span class="flash-price-original">$51.99</span>
+                </div>
+                <button class="btn btn-dark btn-sm btn-add-cart" data-product-id="flash-1" data-price="39.99" style="padding: 5px 12px; font-size: 11px; border-radius: 6px;">
+                  Add
+                </button>
+              </div>
+            </article>
+
+            <!-- Flash Card 2: Nexora Watch S2 -->
+            <article class="flash-card">
+              <span class="flash-discount-badge">-18%</span>
+              <div class="flash-card-media">
+                <img src="assets/images/flash_smartwatch.jpg" alt="Nexora Watch S2" loading="lazy" />
+              </div>
+              <h4 class="flash-card-title">Nexora Watch S2</h4>
+              <div class="flash-card-sub">Smartwatch</div>
+              <div class="flash-card-bottom">
+                <div class="flash-price-wrap">
+                  <span class="flash-price-current">$89.99</span>
+                  <span class="flash-price-original">$109.99</span>
+                </div>
+                <button class="btn btn-dark btn-sm btn-add-cart" data-product-id="flash-2" data-price="89.99" style="padding: 5px 12px; font-size: 11px; border-radius: 6px;">
+                  Add
+                </button>
+              </div>
+            </article>
+
+            <!-- Flash Card 3: PowerCore 20K PD -->
+            <article class="flash-card">
+              <span class="flash-discount-badge">-15%</span>
+              <div class="flash-card-media">
+                <img src="assets/images/flash_powerbank.jpg" alt="PowerCore 20K PD" loading="lazy" />
+              </div>
+              <h4 class="flash-card-title">PowerCore 20K PD</h4>
+              <div class="flash-card-sub">Fast Charging Power Bank</div>
+              <div class="flash-card-bottom">
+                <div class="flash-price-wrap">
+                  <span class="flash-price-current">$49.99</span>
+                  <span class="flash-price-original">$58.99</span>
+                </div>
+                <button class="btn btn-dark btn-sm btn-add-cart" data-product-id="flash-3" data-price="49.99" style="padding: 5px 12px; font-size: 11px; border-radius: 6px;">
+                  Add
+                </button>
+              </div>
+            </article>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Mega Footer (Architectural Luxury 5-Column) -->
+    <footer class="footer-global">
+      <div class="container">
+        <div class="footer-grid">
+          <div>
+            <div style="display: flex; align-items: center; gap: 8px; font-size: 1.4rem; font-weight: 800; color: #fff; margin-bottom: 12px;">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+              <span>ShopCart</span>
+            </div>
+            <p style="font-size: var(--font-size-caption); color: var(--color-text-muted); line-height: 1.6; max-width: 340px; margin-bottom: 16px;">
+              Engineered everyday carry, biometric wearables, and precision acoustics for forward-thinking professionals.
             </p>
-            <div class="flex gap-2">
-              <button class="btn-icon" style="background: rgba(255,255,255,0.1); color:#fff; border:none;" aria-label="Facebook">f</button>
-              <button class="btn-icon" style="background: rgba(255,255,255,0.1); color:#fff; border:none;" aria-label="Twitter">t</button>
-              <button class="btn-icon" style="background: rgba(255,255,255,0.1); color:#fff; border:none;" aria-label="Instagram">in</button>
-              <button class="btn-icon" style="background: rgba(255,255,255,0.1); color:#fff; border:none;" aria-label="YouTube">yt</button>
+            <div style="font-size: 12px; color: #94A3B8;">
+              © 2026 ShopCart International Inc. All rights reserved.
             </div>
           </div>
 
-          <!-- Col 2: Quick Links -->
           <div>
-            <h4 class="footer-col-title">Quick Links</h4>
+            <h4 class="footer-col-title">Shop Collections</h4>
             <div class="footer-links">
-              <a href="#">Home</a>
-              <a href="#shop">Shop</a>
-              <a href="#categories">Categories</a>
-              <a href="#deals">Deals</a>
-              <a href="#about">About Us</a>
+              <a href="#collection-grid">Smart Watches</a>
+              <a href="#collection-grid">Wireless Acoustics</a>
+              <a href="#collection-grid">Leather Carry & Bags</a>
+              <a href="#collection-grid">Polarized Eyewear</a>
+              <a href="#deals-of-week">Deals of the Week</a>
             </div>
           </div>
 
-          <!-- Col 3: Customer Service -->
           <div>
-            <h4 class="footer-col-title">Customer Service</h4>
+            <h4 class="footer-col-title">Company & Values</h4>
             <div class="footer-links">
-              <a href="#contact">Contact Us</a>
-              <a href="#shipping">Shipping Policy</a>
-              <a href="#returns">Return Policy</a>
-              <a href="#terms">Terms & Conditions</a>
-              <a href="#faq">FAQ</a>
+              <a href="#top-brands">Top Brands</a>
+              <a href="#flash-deals">Flash Deals</a>
+              <a href="#collection-grid">Curated Edits</a>
+              <a href="#sustainability">B-Corp Sustainability</a>
+              <a href="#careers">Careers</a>
             </div>
           </div>
 
-          <!-- Col 4: My Account -->
           <div>
-            <h4 class="footer-col-title">My Account</h4>
+            <h4 class="footer-col-title">Customer Care</h4>
             <div class="footer-links">
-              <a href="#orders">My Orders</a>
-              <a href="#wishlist">Wishlist</a>
-              <a href="#account">Account Details</a>
-              <a href="#track">Track Order</a>
-              <a href="#login">Login / Register</a>
-            </div>
-          </div>
-
-          <!-- Col 5: Contact Us -->
-          <div id="contact">
-            <h4 class="footer-col-title">Contact Us</h4>
-            <div class="footer-links" style="font-size: 0.85rem; line-height: 1.6;">
-              <p>📍 123 Commerce St, Suite 100<br>New York, NY 10001</p>
-              <p>📞 +1 (123) 456-7890</p>
-              <p>✉ support@shopcart.com</p>
+              <a href="#help">Help & Contact Center</a>
+              <a href="#warranty">3-Year Warranty Claims</a>
+              <a href="#shipping">Worldwide Shipping Policy</a>
+              <a href="#returns">30-Day Hassle-Free Returns</a>
+              <a href="#tracking">Track My Package</a>
             </div>
           </div>
         </div>
 
-        <!-- Footer Bottom Bar -->
         <div class="footer-bottom">
-          <p>© 2024 ShopCart. All Rights Reserved.</p>
-          <div class="payment-badges">
-            <span class="payment-badge">VISA</span>
-            <span class="payment-badge">Mastercard</span>
-            <span class="payment-badge">PayPal</span>
-            <span class="payment-badge">Apple Pay</span>
-            <span class="payment-badge">Google Pay</span>
+          <div>Built with precision standards • Certified SSL 256-bit Encrypted Checkout</div>
+          <div style="display: flex; gap: 16px;">
+            <span>Privacy Policy</span>
+            <span>Terms of Service</span>
+            <span>Accessibility Statement</span>
           </div>
         </div>
       </div>
     </footer>
 
-    <!-- Slide-Over Cart Drawer -->
+    <!-- Slide-Over Multi-Tier Cart Drawer -->
     <div id="cart-overlay" class="cart-drawer-overlay"></div>
     <aside id="cart-drawer" class="cart-drawer" role="dialog" aria-modal="true" aria-label="Shopping Cart">
       <div class="cart-drawer-header">
@@ -853,27 +1079,32 @@
         <button id="cart-close-btn" class="btn-icon" aria-label="Close cart drawer">×</button>
       </div>
 
-      <!-- Free Shipping Bar Inside Drawer -->
-      <div style="padding: 12px 24px; background: var(--color-surface-muted); border-bottom: 1px solid var(--color-border);">
-        <div id="free-shipping-msg" style="font-size: 0.8rem; font-weight: 600; margin-bottom: 6px; color: var(--color-text-primary);">
-          Add $99.00 more for FREE Shipping
+      <!-- Multi-Tier Free Shipping & Mystery Gift Bar -->
+      <div class="tier-progress-card">
+        <div id="free-shipping-msg" style="font-size: 0.85rem; font-weight: 700; color: var(--color-text-primary); margin-bottom: 6px;">
+          Add $75.00 more for FREE Worldwide Shipping
         </div>
         <div style="width: 100%; height: 6px; background: var(--color-border); border-radius: 999px; overflow: hidden;">
           <div id="free-shipping-progress" style="width: 0%; height: 100%; background: var(--color-primary); transition: width 0.3s ease;"></div>
         </div>
+        <div class="tier-milestone-row">
+          <span id="tier-1-label">Tier 1: $75 Free Ship</span>
+          <span id="tier-2-label">Tier 2: $125 Express</span>
+          <span id="tier-3-label">Tier 3: $175 Free Gift</span>
+        </div>
       </div>
 
       <div id="cart-items-container" class="cart-drawer-body">
-        <!-- Rendered by JavaScript -->
+        <!-- Rendered dynamically by JavaScript -->
       </div>
 
       <div class="cart-drawer-footer">
         <div class="flex items-center justify-between" style="margin-bottom: var(--space-4);">
           <span style="font-size: 1rem; color: var(--color-text-secondary);">Subtotal:</span>
-          <span id="cart-subtotal-val" style="font-size: 1.25rem; font-weight: 800; color: var(--color-text-primary);">$0.00</span>
+          <span id="cart-subtotal-val" style="font-size: 1.35rem; font-weight: 800; color: var(--color-text-primary);">$0.00</span>
         </div>
-        <button class="btn btn-primary btn-full" style="padding: 14px; font-size: 1rem;">
-          Proceed to Checkout
+        <button class="btn btn-primary btn-full" style="padding: 14px; font-size: 1rem; font-weight: 700;">
+          Proceed to Encrypted Checkout →
         </button>
       </div>
     </aside>
@@ -881,132 +1112,75 @@
   </div><!-- /storefront-view -->
 
 
-  <!-- =========================================================================
-       VIEW 2: LIVING DESIGN SYSTEM PATTERN LIBRARY EXPLORER
-       ========================================================================= -->
-  <div id="pattern-library-view" style="display: none;">
+  <!-- VIEW 2: LIVING DESIGN SYSTEM PATTERN LIBRARY EXPLORER -->
+  <div id="pattern-library-view" style="display: none; padding: var(--space-8) 0;">
     <div class="container">
-      <div class="ds-header">
-        <span class="badge badge-accent">Design System v1.0</span>
-        <h1 style="font-size: 2.25rem; font-weight: 800; margin-top: 8px;">ShopCart Pattern Library & Component Showcase</h1>
-        <p style="color: var(--color-text-secondary); margin-top: 4px;">
-          Live inspectable design tokens, atomic buttons, badges, card patterns, and layout architectures.
-        </p>
+      <div style="margin-bottom: var(--space-8); padding-bottom: var(--space-4); border-bottom: 1px solid var(--color-border);">
+        <span class="badge badge-accent">DESIGN SYSTEM SPECIFICATION</span>
+        <h1 style="font-size: 2.25rem; font-weight: 800; margin-top: 8px;">ShopCart Enterprise Pattern Library</h1>
+        <p style="color: var(--color-text-secondary);">Live inspectable tokens, atomic components, and layout systems.</p>
       </div>
 
-      <!-- Section 1: Color Palette -->
-      <div class="ds-card">
-        <h2 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 4px;">1. Color Palette Tokens</h2>
-        <p style="font-size: 0.875rem; color: var(--color-text-muted);">Defined in <code>styles/tokens.css</code></p>
-        <div class="swatch-grid">
-          <div class="swatch">
-            <div class="swatch-color" style="background-color: #FF6B00;"></div>
-            <div class="swatch-info">
-              <strong>Primary Brand</strong>
-              <code>--color-primary</code><br>
-              <code>#FF6B00</code>
-            </div>
+      <div class="ds-card" style="background: #fff; border: 1px solid var(--color-border); border-radius: 12px; padding: 24px; margin-bottom: 24px;">
+        <h3 style="font-size: 1.2rem; font-weight: 700; margin-bottom: 12px;">1. Architectural Color Palette</h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 16px;">
+          <div style="border: 1px solid var(--color-border); border-radius: 8px; overflow: hidden;">
+            <div style="height: 60px; background: #FF5400;"></div>
+            <div style="padding: 8px; font-size: 11px;"><strong>Brand Accent</strong><br/>#FF5400</div>
           </div>
-          <div class="swatch">
-            <div class="swatch-color" style="background-color: #FFF3EB;"></div>
-            <div class="swatch-info">
-              <strong>Primary Light</strong>
-              <code>--color-primary-light</code><br>
-              <code>#FFF3EB</code>
-            </div>
+          <div style="border: 1px solid var(--color-border); border-radius: 8px; overflow: hidden;">
+            <div style="height: 60px; background: #0F172A;"></div>
+            <div style="padding: 8px; font-size: 11px;"><strong>Obsidian Dark</strong><br/>#0F172A</div>
           </div>
-          <div class="swatch">
-            <div class="swatch-color" style="background-color: #111827;"></div>
-            <div class="swatch-info">
-              <strong>Dark Slate 800</strong>
-              <code>--color-dark-800</code><br>
-              <code>#111827</code>
-            </div>
+          <div style="border: 1px solid var(--color-border); border-radius: 8px; overflow: hidden;">
+            <div style="height: 60px; background: #F8F9FA; border-bottom: 1px solid #eee;"></div>
+            <div style="padding: 8px; font-size: 11px;"><strong>Surface Subtle</strong><br/>#F8F9FA</div>
           </div>
-          <div class="swatch">
-            <div class="swatch-color" style="background-color: #0B0F17;"></div>
-            <div class="swatch-info">
-              <strong>Dark Pure 900</strong>
-              <code>--color-dark-900</code><br>
-              <code>#0B0F17</code>
-            </div>
-          </div>
-          <div class="swatch">
-            <div class="swatch-color" style="background-color: #FBBF24;"></div>
-            <div class="swatch-info">
-              <strong>Rating Gold</strong>
-              <code>--color-rating</code><br>
-              <code>#FBBF24</code>
-            </div>
-          </div>
-          <div class="swatch">
-            <div class="swatch-color" style="background-color: #10B981;"></div>
-            <div class="swatch-info">
-              <strong>Success Green</strong>
-              <code>--color-success</code><br>
-              <code>#10B981</code>
-            </div>
-          </div>
-          <div class="swatch">
-            <div class="swatch-color" style="background-color: #F9FAFB; border-bottom: 1px solid #E5E7EB;"></div>
-            <div class="swatch-info">
-              <strong>Surface Muted</strong>
-              <code>--color-surface-muted</code><br>
-              <code>#F9FAFB</code>
-            </div>
+          <div style="border: 1px solid var(--color-border); border-radius: 8px; overflow: hidden;">
+            <div style="height: 60px; background: #E2E8F0;"></div>
+            <div style="padding: 8px; font-size: 11px;"><strong>Structural Border</strong><br/>#E2E8F0</div>
           </div>
         </div>
       </div>
-
-      <!-- Section 2: Atomic Buttons & Badges -->
-      <div class="ds-card">
-        <h2 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 4px;">2. Atomic Buttons & Badges</h2>
-        <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: center; margin-top: 16px;">
-          <button class="btn btn-primary">Primary Button</button>
-          <button class="btn btn-dark">Dark Button</button>
-          <button class="btn btn-outline">Outline Button</button>
-          <button class="btn btn-dark btn-pill">Pill Button</button>
-          <button class="btn-icon" aria-label="Icon preview">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
-          </button>
-          <button class="btn-icon active" aria-label="Icon active preview">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
-          </button>
-        </div>
-        <div style="display: flex; gap: 12px; flex-wrap: wrap; align-items: center; margin-top: 16px;">
-          <span class="badge badge-accent">NEW COLLECTION</span>
-          <span class="badge badge-verified">✓ Verified Buyer</span>
-          <span class="rating-stars">★★★★★ <span class="rating-count">(128)</span></span>
-        </div>
-      </div>
-
-      <!-- Section 3: Typography Scales -->
-      <div class="ds-card">
-        <h2 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 12px;">3. Typography Hierarchy</h2>
-        <div style="display: flex; flex-direction: column; gap: 12px;">
-          <div>
-            <span style="font-size: 12px; color: var(--color-text-muted);">Hero Display (ExtraBold 44px)</span>
-            <div style="font-size: var(--font-size-hero); font-weight: 800; line-height: 1.15;">Discover The Best Products</div>
-          </div>
-          <div>
-            <span style="font-size: 12px; color: var(--color-text-muted);">H1 Headline (Bold 32px)</span>
-            <div style="font-size: var(--font-size-h1); font-weight: 700;">Super Sale Up To 50% Off!</div>
-          </div>
-          <div>
-            <span style="font-size: 12px; color: var(--color-text-muted);">H2 Section Title (Bold 24px)</span>
-            <div style="font-size: var(--font-size-h2); font-weight: 700;">Best Selling Products</div>
-          </div>
-          <div>
-            <span style="font-size: 12px; color: var(--color-text-muted);">Body Text (Regular 15px)</span>
-            <div style="font-size: var(--font-size-body); color: var(--color-text-secondary); max-width: 600px;">
-              Shop top-quality products at unbeatable prices. All items include 30-day money-back guarantee with fast delivery.
-            </div>
-          </div>
-        </div>
-      </div>
-
     </div>
   </div><!-- /pattern-library-view -->
+
+  <!-- Floating Design System Toggle -->
+  <div style="position: fixed; bottom: 24px; right: 24px; z-index: var(--z-switcher);">
+    <button id="ds-mode-toggle" class="btn btn-dark btn-pill" style="box-shadow: var(--shadow-xl); border: 1px solid rgba(255,255,255,0.2);">
+      <span>🎨 View Design System</span>
+    </button>
+  </div>
+
+  <!-- Quick View Product Modal -->
+  <div id="quick-view-modal" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="modal-product-title">
+    <div class="modal-content">
+      <button id="modal-close-btn" class="modal-close-btn" aria-label="Close modal">×</button>
+      <div class="modal-media">
+        <img id="modal-product-img" src="" alt="Product preview" />
+      </div>
+      <div class="modal-body">
+        <div>
+          <span class="badge badge-accent" style="margin-bottom: var(--space-2); display: inline-block;">INSTANT SPECIFICATION</span>
+          <h3 id="modal-product-title" style="font-size: 1.3rem; font-weight: 700; margin-bottom: var(--space-2); color: var(--color-text-primary);">Product Name</h3>
+          <div id="modal-product-rating" class="rating-stars" style="margin-bottom: var(--space-3);">★★★★★</div>
+          <div id="modal-product-price" style="font-size: 1.6rem; font-weight: 800; color: var(--color-text-primary); margin-bottom: var(--space-4);">$0.00</div>
+          <p style="font-size: var(--font-size-body); color: var(--color-text-secondary); line-height: 1.5; margin-bottom: var(--space-4);">
+            Engineered with aerospace-grade durability and minimalist ergonomics. Standard 3-year replacement warranty included.
+          </p>
+          <div style="display: flex; gap: 8px; margin-bottom: var(--space-4); align-items: center;">
+            <span style="font-size: 11px; font-weight: 700; color: var(--color-text-muted);">AVAILABILITY:</span>
+            <span class="badge badge-verified">In Stock & Ready To Ship</span>
+          </div>
+        </div>
+        <div>
+          <button id="modal-add-cart-btn" class="btn btn-primary btn-full" style="padding: 14px; font-size: 1rem; font-weight: 700;">
+            Add To Cart • 3-Year Warranty
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- Application Logic -->
   <script src="scripts/app.js"></script>

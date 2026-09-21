@@ -1,5 +1,6 @@
 /**
  * ShopCart Base Styles & Modern Reset
+ * Calibrated for luxury editorial typography and strict layout hygiene.
  */
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
 
@@ -25,6 +26,16 @@ body {
   color: var(--color-text-secondary);
   background-color: var(--color-surface);
   overflow-x: hidden;
+}
+
+::selection {
+  background-color: var(--color-dark-900);
+  color: var(--color-text-white);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
 }
 
 img, svg, picture, video {
@@ -53,17 +64,22 @@ a {
 h1, h2, h3, h4, h5, h6 {
   color: var(--color-text-primary);
   font-weight: var(--font-weight-bold);
-  line-height: var(--line-height-snug);
+  line-height: var(--line-height-tight);
+  letter-spacing: var(--letter-spacing-tight);
+}
+
+h1 {
+  letter-spacing: var(--letter-spacing-tighter);
 }
 
 ul, ol {
   list-style: none;
 }
 
-/* Custom Scrollbar */
+/* Luxury Minimal Scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 7px;
+  height: 7px;
 }
 
 ::-webkit-scrollbar-track {
@@ -71,7 +87,7 @@ ul, ol {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--color-border-hover);
+  background: var(--color-border);
   border-radius: var(--radius-full);
 }
 
